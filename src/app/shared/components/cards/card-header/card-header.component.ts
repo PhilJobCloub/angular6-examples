@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-card-header',
   template: `
-    <p>
-      card-header works!
-    </p>
+      <ng-content></ng-content>
   `,
   styles: []
 })

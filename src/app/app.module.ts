@@ -35,6 +35,7 @@ import { reducers,effects, CustomSerializer } from './store';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+
 const ImportedModules: any[] = [
   FormsModule,
   ReactiveFormsModule,
@@ -55,8 +56,7 @@ const ImportedModules: any[] = [
 
 @NgModule({
   declarations: [
-    ...ImportedComponents,
-    ObservablesComponent
+    ...ImportedComponents
   ],
   imports: [
     BrowserModule,

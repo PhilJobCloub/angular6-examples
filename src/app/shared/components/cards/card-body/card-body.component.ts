@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-card-body',
   template: `
-    <p>
-      card-body works!
-    </p>
+    <ng-content></ng-content>
   `,
   styles: []
 })

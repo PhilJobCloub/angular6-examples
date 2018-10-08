@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
     private _appSandBox : AppSandboxService,
     private _appModalService : AppModalService) {
     this.age = 50;
+
     //Create observable from the window event
     this.resize$ = fromEvent(window, 'resize')
     .pipe(
@@ -82,17 +83,28 @@ export class AppComponent implements OnInit {
   }
 
  
- onActivate() {
+  onActivate() {
     let num = Math.round((Math.random() * 6) + 1);
     this._service.userActivated.next(num)
   }
+
+
+  /** Example : event from extended Class **/
+  alertJobId({id}) {
+   alert(id);
+  }
+
+  alertJobTitle({title}) {
+    alert(title);
+   }
+
   onUpdateName(event: Event) {
     this.name = (<HTMLInputElement>event.target).value
     //this.nameCreated = (this.name.trim().length > 0);
     
   }
 
-  public removeModal() {
+  removeModal() {
     this._appModalService.destroy();
   }
 
