@@ -1,0 +1,18 @@
+<ul>
+  <li>
+      <a 
+        [routerLink]="['users']"
+        routerLinkActive="active-link"
+        #rla_users="routerLinkActive"> 
+        {{ rla_users.isActive ? 'users Bob' : 'users' }}
+      </a>
+  </li>
+  <li>
+      <a 
+        [routerLink]="['companies']"
+        routerLinkActive="active-link"
+        #rla_companies="routerLinkActive"> 
+        {{ rla_companies.isActive ? 'companies Selective' : 'companies' }}
+      </a>
+  </li>
+</ul>

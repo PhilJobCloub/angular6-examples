@@ -1,0 +1,28 @@
+:host ul,
+:host ul li  {
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+
+}
+
+:host ul {
+    display:flex;
+    flex-flow: row wrap;
+    
+   
+}
+:host ul li  {
+    flex-grow: 1;
+}
+
+:host a {
+    padding: 10px 15px;
+    color:#fff;
+    display: block;
+    border-bottom:4px solid transparent;
+}
+
+:host a.active-link {
+    border-color:rgb(26, 221, 247);
+}

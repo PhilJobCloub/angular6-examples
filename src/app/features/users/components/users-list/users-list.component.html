@@ -1,0 +1,12 @@
+<p *ngIf="!users?.length; else userlistIsEmpty">
+  List is empty please add some new users
+</p>
+<ng-template #userlistIsEmpty>
+    <app-list-items 
+      [items]="users"
+      (handleOnClickEvent)="removeUser($event)"
+      (handleOnItemClickEvent)="navigateToUserDetails($event)"
+      [type]="'obj'">
+    </app-list-items>
+</ng-template>
+

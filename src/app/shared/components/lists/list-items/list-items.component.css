@@ -1,0 +1,16 @@
+:host ul {
+    list-style-type : none;
+    margin:20px auto;
+    padding: 0;
+    width:100%;
+    max-width:250px;
+}
+
+:host li {
+    list-style-type : none;
+    padding:20px;
+    border-radius: 7px;
+    box-shadow : 1px 1px 1px 1px #000;
+    border: 1px solid #777;
+    margin: 10px auto;
+}

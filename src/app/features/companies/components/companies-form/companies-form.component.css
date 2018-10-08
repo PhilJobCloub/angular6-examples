@@ -1,0 +1,48 @@
+:host input {
+    display: block;
+    padding : 10px 20px;
+    margin: 5px auto;
+    width: 200px;
+}
+:host input.ng-invalid.ng-touched.ng-dirty {
+    border:1px solid #cc3300;
+}
+:host button {
+    display: block;
+    padding : 10px 20px;
+    margin: 20px auto;
+    width: 250px;
+    background :blue;
+    color :white;
+}
+:host label {
+    margin: 0 auto;
+    max-width:300px;
+    text-align: left;
+}
+:host form {
+    max-width:245px;
+    margin: 0 auto;
+}
+:host .errors {
+    font-size : 11px;
+    color: red;
+}
+:host .btn.btn-primary {
+    cursor: pointer;
+    display: block;
+    padding : 10px 20px;
+    margin: 20px auto;
+    width: 250px;
+    background: #ffcc33;
+    color :white;
+}
+
+:host textarea {
+    display: block;
+    width: 240px;
+    height: 60px;
+}
+.btn-disabled { 
+    opacity: 0.4;
+}

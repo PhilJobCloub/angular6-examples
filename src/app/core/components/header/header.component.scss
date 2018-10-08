@@ -1,0 +1,12 @@
+@import "mixins";
+
+$header-background-color : $blue;
+$header-text-color : $white;
+
+:host {
+    background : $header-background-color;
+    color: #fff;
+    display: block;
+}
+
+

@@ -1,0 +1,22 @@
+<ul>
+  <li>
+    <a 
+        [routerLink]="['listing']"
+        routerLinkActive="active-link"
+        #rla_users="routerLinkActive"> 
+        Listing
+      </a>
+  </li>
+  <li>
+    <a 
+    [routerLink]="['registration']"
+    routerLinkActive="active-link"
+    #rla_users="routerLinkActive"> 
+      Registration
+  </a>
+  </li>
+  <li>
+    <button (click)="openDialog()">Open Dialog</button>
+  </li>
+</ul>
+

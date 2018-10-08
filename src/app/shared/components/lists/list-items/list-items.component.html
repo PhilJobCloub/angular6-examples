@@ -1,0 +1,9 @@
+<ul>
+  <li app-list-single-item 
+      *ngFor="let item of items"
+      [item]="item"
+      [type]="type"
+      (handleClickEvent)="onClickEvent($event)"
+      (handleItemClickEvent)="onItemClickEvent($event)">
+  </li>
+</ul>

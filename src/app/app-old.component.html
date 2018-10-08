@@ -1,0 +1,127 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    App
+  </h1>
+<!--
+    <a [routerLink]="['foobar']" [queryParams]="{ id : 30 }" > foobar </a>
+  <a [routerLink]="['home']" > home </a>
+  <app-observables></app-observables>
+  <hr/>
+  <router-outlet></router-outlet>
+-->
+ <!-- Dyanmic 
+  <div class="form">
+      <div style="text-align:center">
+      <h1>
+{{ today| date :"dd/MM/yyyy"}}
+      </h1>
+      </div>
+      <app-dynamic-form
+        [fields]="regConfig" 
+        (submit)="onSubmit($event)">
+      </app-dynamic-form>
+      <div class="margin-top">
+      {{ form.value | json }}
+      </div>
+      </div>
+  <hr />-->
+  <!--<app-reactive-forms></app-reactive-forms>-->
+  <!--
+    <div class="form">
+    <div style="text-align:center">
+    <h1>
+    Registration Form
+    </h1>
+    </div>
+    <app-dynamic-form
+      [fields]="regConfig" 
+      (submit)="onSubmit($event)">
+    </app-dynamic-form>
+    <div class="margin-top">
+    {{ form.value | json }}
+    </div>
+    </div>
+  -->
+ <!--
+    <app-forms></app-forms>
+ -->
+  <!--
+    <app-observables></app-observables>
+    <button (click)="onActivate()">Activate</button>
+  -->
+  <hr />
+  <h3>List Single Item: </h3>
+  <app-list-single-item
+    [item]="valItem"
+    [name]="'Didier'">
+  </app-list-single-item>
+  <hr />
+  <h3>List Items: Empty</h3>
+  <app-list-items></app-list-items>
+  <hr />
+  <h3>List Items: with values</h3>
+  <app-list-items
+    [items]="users"
+    [type]="'obj'"
+  ></app-list-items>
+
+  <app-list-items
+  [items]="[{stuff : 8, machin:50, zut:78}]"
+  [type]="'obj'"
+></app-list-items>
+<hr>
+<h3>User List From | User.Module | User.component</h3>
+  <app-users-list>
+
+  </app-users-list>
+
+
+  <h3>User List From | User.Module | User.component</h3>
+  <app-companies-list>
+
+  </app-companies-list>
+<!--
+  <app-company-list></app-company-list>
+  <hr />
+  <input type="text"
+    class="form-control"
+    (input)="onUpdateName($event)" 
+    />
+
+    <input type="text"
+    class="form-control"
+    [(ngModel)]="name" 
+    />
+
+  <h1>{{name}}</h1>
+  <p> Name created var : {{nameCreated}}</p>
+  <p *ngIf="name; else noNameCreated">Name has been created</p>
+  <ng-template #noNameCreated>
+    <p>
+      No Name have been created
+    </p>
+  </ng-template>
+  <app-foobar></app-foobar>
+
+  <hr />
+  <app-list-items
+    [items]="['test5', 'test6']">
+  </app-list-items>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>-->
+
+
+

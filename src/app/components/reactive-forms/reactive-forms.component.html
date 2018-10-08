@@ -1,0 +1,103 @@
+<h3>Reactive Forms</h3>
+<p>Form Status: {{ profileForm.value | json }}</p>
+<p>Form Valid: {{ profileForm.valid }}</p>
+{{submitted}}
+<form [formGroup]="profileForm"
+    (ngSubmit)="onSubmit()"
+    [ngClass]="{'submitted' : submitted}">
+  <div class="btn btn-primary" (click)="preFillProfile()">Pre-Fill</div>
+  <label> First Name:
+    <input 
+      formControlName="firstname" 
+      type="text"/>
+      {{ f.firstname.errors | json}}
+      <div *ngIf="!f.firstname.errors?.required" class="invalid-feedback">
+          <div *ngIf="f.firstname.errors">je sapel {{f.firstname.value}} forbidden</div>
+      </div>
+  </label>
+  <label> Last Name:
+    <input formControlName="lastname" type="text" />
+  </label>
+  <label> Password:
+      <input formControlName="password" type="text" />
+      <div *ngIf="!f.password.errors?.required">
+          <div *ngIf="f.password.errors">wrong pattern (need a Capital letter, a number, and 8 letter min</div>
+      </div>
+    </label>
+  <label> Email:
+      <input formControlName="email" type="text" />
+    </label>
+  <label> Age:
+    <input formControlName="age" type="text" />
+    <div *ngIf="!f.age.errors?.required">
+        <div *ngIf="f.age.errors">moins de 18 not allowed</div>
+    </div>
+  </label>
+  <label> Check:
+    <input type="checkbox" formControlName="check" />
+  </label>
+  <div formGroupName="address">
+      <h3>Address</h3>
+    
+      <label>
+        Street:
+        <input type="text" formControlName="street">
+      </label>
+    
+      <label>
+        City:
+        <input type="text" formControlName="city">
+      </label>
+      
+      <label>
+        State:
+        <input type="text" formControlName="state">
+      </label>
+    
+      <label>
+        Zip Code:
+        <input type="text" formControlName="zip">
+      </label>
+    </div>
+  <button type="submit">Submit</button>
+</form>
+<!--
+  <p>Form Status: {{ profileForm.value | json }}</p>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <p>Form Status: {{ profileForm.status }}</p>
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+  
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+    <div formGroupName="address">
+      <h3>Address</h3>
+    
+      <label>
+        Street:
+        <input type="text" formControlName="street">
+      </label>
+    
+      <label>
+        City:
+        <input type="text" formControlName="city">
+      </label>
+      
+      <label>
+        State:
+        <input type="text" formControlName="state">
+      </label>
+    
+      <label>
+        Zip Code:
+        <input type="text" formControlName="zip">
+      </label>
+    </div>
+
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+-->

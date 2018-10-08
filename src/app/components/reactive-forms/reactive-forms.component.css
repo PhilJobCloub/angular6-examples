@@ -1,0 +1,27 @@
+:host input {
+    display: block;
+    padding : 10px 20px;
+    margin: 5px auto;
+    width: 200px;
+}
+:host input.ng-invalid.ng-touched.ng-dirty {
+    border:1px solid #cc3300;
+}
+:host button {
+    display: block;
+    padding : 10px 20px;
+    margin: 20px auto;
+    width: 250px;
+    background :blue;
+    color :white;
+}
+
+:host .btn.btn-primary {
+    cursor: pointer;
+    display: block;
+    padding : 10px 20px;
+    margin: 20px auto;
+    width: 250px;
+    background: #ffcc33;
+    color :white;
+}

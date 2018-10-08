@@ -1,0 +1,23 @@
+<h3>
+  User Form
+</h3>
+<form [formGroup]="userForm"
+     (ngSubmit)="addUser()">
+  <label> First Name:
+    <input 
+      formControlName="name" 
+      type="text"/>
+      <div class="errors"
+          [style.opacity]="f.name.errors?.required ? 1 : 0">
+          *name is required
+      </div>
+  </label>
+  <button
+    [ngClass]="{ 'btn-disabled' : !userForm.valid }"
+    [disabled]="!userForm.valid" 
+    type="submit">
+      Submit
+  </button>
+</form>
+
+

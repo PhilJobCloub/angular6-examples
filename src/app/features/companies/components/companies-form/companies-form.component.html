@@ -1,0 +1,39 @@
+<h3>
+  Company Form
+</h3>
+<form [formGroup]="companyForm"
+     (ngSubmit)="addCompany()">
+  <label> Company name:
+    <input 
+      formControlName="name" 
+      type="text"/>
+      <div class="errors"
+          [style.opacity]="f.name.errors?.required ? 1 : 0">
+          *name is required
+      </div>
+  </label>
+  <label> Credit Card:
+      <input 
+        appCreditCard
+        formControlName="card" 
+        type="text"/>
+    </label>
+  <label> Description :
+      <textarea 
+        formControlName="description" 
+        type="text">
+        </textarea>
+        <div class="errors"
+            [style.opacity]="f.description.errors?.required ? 1 : 0">
+            *company description is required
+        </div>
+    </label>
+  <button
+    [ngClass]="{ 'btn-disabled' : !companyForm.valid }"
+    [disabled]="!companyForm.valid" 
+    type="submit">
+      Submit
+  </button>
+</form>
+
+

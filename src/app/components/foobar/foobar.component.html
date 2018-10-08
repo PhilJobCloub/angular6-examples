@@ -1,0 +1,15 @@
+<p>
+  foobar works!
+  <button (click)="resetCounter()">Reset counter</button>
+  <button (click)="getUserActivated()">Get counter value</button>
+
+</p>
+<app-list-items
+  (handleDoSomething)="doAnotherThing()"
+  [items]="['test', 'test2']">
+</app-list-items>
+
+<app-list-items
+  (handleDoSomething)="doOneThing()"
+  [items]="['test3', 'test4']">
+</app-list-items>
