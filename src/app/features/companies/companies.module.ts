@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 /***** modules ****/
 import { SharedModule } from '@app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http'; 
-
+import { StoreModule } from '@ngrx/store';
 
 /*****Components****/
 import * as fromComponents from '@app/features/companies/components';
@@ -18,6 +18,7 @@ import * as fromPages from './pages';
 /***** routing ****/
 import { CompaniesRoutingModule } from './companies-routing.module';
 
+import { companiesReducer } from '@app/features/companies/store/reducers/companies.reducers';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { CompaniesRoutingModule } from './companies-routing.module';
     SharedModule,
     RouterModule,
     HttpClientModule,
-    CompaniesRoutingModule
+    CompaniesRoutingModule,
+    StoreModule.forFeature('companiesState', companiesReducer)
   ],
   declarations: [
     fromComponents.components,

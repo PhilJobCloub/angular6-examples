@@ -14,5 +14,11 @@
         #rla_companies="routerLinkActive"> 
         {{ rla_companies.isActive ? 'companies Selective' : 'companies' }}
       </a>
+      <a 
+        [routerLink]="['companies/test']"
+        routerLinkActive="active-link"
+        #rla_companies="routerLinkActive"> 
+        {{ rla_companies.isActive ? 'companies Selective' : 'companies' }}
+      </a>
   </li>
 </ul>

@@ -29,7 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 /******reducer******/
-import { reducers,effects, CustomSerializer } from './store';
+import { reducers, effects, CustomSerializer } from './store';
 
 /*******/
 import { ServiceWorkerModule } from '@angular/service-worker';

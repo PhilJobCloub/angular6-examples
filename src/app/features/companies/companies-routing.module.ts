@@ -5,13 +5,16 @@ import { RouterModule, Routes } from '@angular/router';
 /*****Pages****/
 import * as fromPages from '@app/features/companies/pages';
 
+/*****Pages****/
+import * as fromComponents from '@app/features/companies/components';
+
 export const routes: Routes = [
   {
     path: '',
     component: fromPages.CompaniesHomePage,
-    children: [  
-    ]
+    children: []
   }
+  
 ];
 
 @NgModule({

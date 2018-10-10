@@ -70,7 +70,6 @@ const addUser = (state, action) => {
 
     return UtilsHelpers.prototype.updateObject(state,
         {
-            ...state,
             entities
         });
 };

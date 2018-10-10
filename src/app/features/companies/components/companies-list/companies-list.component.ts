@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { Company } from '../../models/company.model';
-import { CompaniesService } from '@app/features/companies/services/companies.service';
-
 
 @Component({
   selector: 'app-companies-list',
@@ -10,27 +8,13 @@ import { CompaniesService } from '@app/features/companies/services/companies.ser
   styleUrls: ['./companies-list.component.css'],
   
 })
-export class CompaniesListComponent implements OnInit {
+export class CompaniesListComponent {
 
-  @Input() companies : Company[] = [];
-
-  constructor(private _companiesservice : CompaniesService) { }
-
-  ngOnInit() {
-    // get companies
-    this.companies = this._companiesservice.getCompanies();
-
-    // subscribe event
-    this._companiesservice.companies_list_updated_subject$.subscribe(
-      (companies : Company[]) => {
-        this.companies = companies;
-      }
-    )
-  }
-
+  @Input() companies : Company[];
+  @Output() handleDeleteCompany : EventEmitter<number> = new EventEmitter();
+  
   removeCompany({id}) {
-    
-    this._companiesservice.deleteCompanies(id)
+    this.handleDeleteCompany.emit(id)
   }
 
 }

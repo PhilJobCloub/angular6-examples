@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder  } from '@angular/forms';
 
 /***** models *****/
 import { Company } from '../../models/company.model';
-
-/***** services *****/
-import { CompaniesService } from '@app/features/companies/services/companies.service';
 
 /***** validators *****/
 import { EmailValidator } from '@app/shared/validators/email/email.validator';
@@ -20,9 +17,10 @@ export class CompaniesFormComponent implements OnInit {
 
   public companyForm: FormGroup;
 
+  @Output() handleAddCompany : EventEmitter<Company> = new EventEmitter();
+  
   constructor(
-    private _formbuilder: FormBuilder,
-    private _companiesservice : CompaniesService
+    private _formbuilder: FormBuilder
     ) {}
   
   ngOnInit() {
@@ -44,26 +42,19 @@ export class CompaniesFormComponent implements OnInit {
     return this.companyForm.controls; 
   }
 
-  addCompany() : void {
+  addCompany() {
+     let newCompany : Company =  new Company(
+      this.companyForm.value.name, 
+      this.companyForm.value.description,
+      Math.round(Math.random() * 2000))
 
-   // test API
-   this._companiesservice.create(
-      new Company(
-        this.companyForm.value.name, 
-        this.companyForm.value.description,
-        Math.round(Math.random() * 2000))
-    ).subscribe((val) => { debugger });
 
-    // test Service
-    this._companiesservice.addCompany(
-      new Company(
-        this.companyForm.value.name, 
-        this.companyForm.value.description,
-        Math.round(Math.random() * 2000))
-    )
+  // reset form
+  this.companyForm.reset();
 
-    // reset form
-    this.companyForm.reset();
+  // emit the event
+  this.handleAddCompany.emit(newCompany)
+ 
   }
 
 
