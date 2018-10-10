@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 /*****Pages****/
 import * as fromPages from './pages';
 
-/*****Pages****/
+/*****Components****/
 import * as fromComponents from './components';
 
 export const routes: Routes = [
