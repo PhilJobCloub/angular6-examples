@@ -15,7 +15,7 @@ export interface FeatureState extends fromApp.State {
   }
 
 export interface State {
-    entities: User[],
+    entities: { [id : number ]: User },
     loaded: boolean;
     loading: boolean;
     errors : any
@@ -23,7 +23,7 @@ export interface State {
 
 /***** initial state  ****/
 const initialState: State = {
-    entities: [],
+    entities : {},
     loaded: false,
     loading: false,
     errors : null

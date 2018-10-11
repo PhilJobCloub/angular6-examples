@@ -15,7 +15,7 @@ export  interface FeatureState extends fromApp.State {
 }
 
 export interface State {
-    entities : {},
+    entities : { [id : number ]: Company },
 }
 
 /***** initial state  ****/
