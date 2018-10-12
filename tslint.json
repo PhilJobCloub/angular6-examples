@@ -2,6 +2,7 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
+  "alwaysShowRuleFailuresAsWarnings": true,
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,
@@ -11,9 +12,7 @@
       "check-space"
     ],
     "curly": true,
-    "deprecation": {
-      "severity": "warn"
-    },
+    "deprecation": true,
     "eofline": true,
     "forin": true,
     "import-blacklist": [
@@ -29,7 +28,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      140
+      256
     ],
     "member-access": false,
     "member-ordering": [
@@ -54,7 +53,7 @@
       "trace"
     ],
     "no-construct": true,
-    "no-debugger": true,
+    "no-debugger": false,
     "no-duplicate-super": true,
     "no-empty": false,
     "no-empty-interface": true,
@@ -99,11 +98,11 @@
     "typedef-whitespace": [
       true,
       {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
       }
     ],
     "unified-signatures": true,
@@ -114,7 +113,10 @@
       "check-decl",
       "check-operator",
       "check-separator",
-      "check-type"
+      "check-type",
+      "check-rest-spread",
+      "check-module",
+      "check-preblock"
     ],
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
@@ -124,7 +126,7 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
+    "component-class-suffix": [true, "Component", "Page"],
     "directive-class-suffix": true
   }
 }
