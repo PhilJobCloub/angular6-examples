@@ -5,6 +5,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import * as fromCorePages from '@app/core/pages';
 
 const routes: Routes = [
+  { path: 'posts', loadChildren: '@app/features/posts/posts.module#PostsModule'},
   { path: 'users', loadChildren: '@app/features/users/users.module#UsersModule'},
   { path: 'companies', loadChildren: '@app/features/companies/companies.module#CompaniesModule'},
   { path: '404', component: fromCorePages.Error404Page},

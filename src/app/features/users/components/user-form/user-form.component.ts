@@ -6,10 +6,10 @@ import { Store } from '@ngrx/store';
 import { User } from '@app/features/users/models/user.model';
 
 /**** reducer ****/
-import * as fromUsers from '@app/features/users/store/users.reducers';
+import * as fromUsers from '@app/features/users/store/reducers/users.reducers';
 
 /**** actions ****/
-import * as usersActions from '@app/features/users/store/users.actions';
+import * as usersActions from '@app/features/users/store/actions/users.actions';
 
 @Component({
   selector: 'app-user-form',

@@ -4,7 +4,7 @@ import { UtilsHelpers } from '@app/shared/helpers/utils.helpers';
 import * as fromApp from '@app/store';
 
 /***** actions  ****/
-import * as UsersActions from '@app/features/users/store/users.actions';
+import * as UsersActions from '@app/features/users/store/actions/users.actions';
 
 /***** models  ****/
 import { User } from '@app/features/users/models/user.model';

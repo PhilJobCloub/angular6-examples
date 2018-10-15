@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-translusion',
+  selector: 'app-transclusion',
   template: `
     <h1>Multi slot transclusion</h1>
     <app-card>
@@ -15,10 +15,9 @@ import { Component, OnInit } from '@angular/core';
             <div class="card-block">
                 <h4 class="card-title">You can put any content here</h4>
                 <p class="card-text">For example this line of text and</p>
-                <a (click)="dosomething()" class="btn btn-primary">This button</a>
+                <a (click)="doSomething()" class="btn btn-primary">This button</a>
               </div>
         </app-card-body>
-
         <!-- footer -->
         <app-card-footer>
             New <strong>footer</strong>
@@ -28,15 +27,15 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class TranslusionComponent implements OnInit {
+export class TransclusionComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  dosomething() {
-    alert('click on transculion button')
+  doSomething() {
+    alert('click on transclusion button');
   }
 
 }

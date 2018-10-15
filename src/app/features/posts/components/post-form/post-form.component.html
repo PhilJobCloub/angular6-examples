@@ -1,0 +1,32 @@
+<h3>
+  Post Form
+</h3>
+<form [formGroup]="postForm"
+     (ngSubmit)="addPost()">
+  <label> Title:
+    <input 
+      formControlName="title" 
+      type="text"/>
+      <div class="errors"
+          [style.opacity]="f.title.errors?.required ? 1 : 0">
+          *title is required
+      </div>
+  </label>
+  <label> Body:
+    <input 
+      formControlName="body" 
+      type="text"/>
+      <div class="errors"
+          [style.opacity]="f.body.errors?.required ? 1 : 0">
+          *body is required
+      </div>
+  </label>
+  <button
+    [ngClass]="{ 'btn-disabled' : !postForm.valid }"
+    [disabled]="!postForm.valid" 
+    type="submit">
+      Submit
+  </button>
+</form>
+
+

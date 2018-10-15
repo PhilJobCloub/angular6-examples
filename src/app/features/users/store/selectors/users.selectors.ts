@@ -2,7 +2,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 /**** main reducer ****/
 import * as fromRoot from '@app/store';
-import * as fromFeatures from './users.reducers';
+import * as fromFeatures from '@app/features/users/store/reducers/users.reducers';
 
 
 export const getUserState = createFeatureSelector<fromFeatures.State>('usersState');

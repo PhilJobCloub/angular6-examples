@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
 import { User } from '@app/features/users/models/user.model';
 
 /**** reducer ****/
-import * as fromUsers from '@app/features/users/store/users.reducers';
+import * as fromUsers from '@app/features/users/store/reducers/users.reducers';
 
 /**** selectors ****/
-import * as fromUsersSelectors from '@app/features/users/store/users.selectors';
+import * as fromUsersSelectors from '@app/features/users/store/selectors/users.selectors';
 
 /**** actions ****/
-import * as usersActions from '@app/features/users/store/users.actions';
+import * as usersActions from '@app/features/users/store/actions/users.actions';
 
 @Component({
   selector: 'app-users-listing',
