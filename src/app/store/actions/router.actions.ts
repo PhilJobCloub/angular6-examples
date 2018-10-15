@@ -12,26 +12,26 @@ export class Go implements Action {
     readonly type = GO;
 
     constructor(
-        public payload: {
-            path: any[];
+        public payload : {
+            path : any[];
             query? : object;
-            extra?: NavigationExtras
+            extra? : NavigationExtras
 
         }) {}
 
 }
 
 export class Back implements Action {
-    readonly type = BACK
+    readonly type = BACK;
 }
 
 export class Forward implements Action {
-    readonly type = FORWARD
+    readonly type = FORWARD;
 }
 
 // action types
 
 export type routerActions =
-| Go 
+| Go
 | Back
 | Forward;

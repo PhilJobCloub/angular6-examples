@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 /**** main reducer ****/
 import * as fromRoot from '@app/store';
@@ -10,19 +10,19 @@ export const getUserState = createFeatureSelector<fromFeatures.State>('usersStat
 export const getAllUsers = createSelector(
     getUserState,
     state => state.entities
-)
+);
 
 /* transform my obj in an array */
 export const getUsersList = createSelector(
     getAllUsers,
     entities => Object.keys(entities).map(key => entities[key])
-)
+);
 
 export const getUserById = createSelector(
     getAllUsers,
     fromRoot.getRouterState,
     (entities, router) => {
         return router.state &&
-            entities[router.state.params.userId]
+            entities[router.state.params.userId];
     }
-)
+);

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes,  } from '@angular/router';
 
 /****** Core Pages ******/
 import * as fromCorePages from '@app/core/pages';
 
-const routes: Routes = [
+const routes : Routes = [
   { path: 'users', loadChildren: '@app/features/users/users.module#UsersModule'},
+  { path: 'membership', loadChildren: '@app/features/membership/membership.module#MembershipModule'},
   { path: 'companies', loadChildren: '@app/features/companies/companies.module#CompaniesModule'},
   { path: '404', component: fromCorePages.Error404Page},
   { path: '', redirectTo: '', pathMatch: 'full' },

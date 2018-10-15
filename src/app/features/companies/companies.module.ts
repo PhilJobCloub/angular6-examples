@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 /***** modules ****/
 import { SharedModule } from '@app/shared/shared.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
 /*****Components****/

@@ -21,7 +21,7 @@ import * as fromPages from './pages';
     ...fromComponents.components,
     ...fromPages.pages
   ],
-  entryComponents:[
+  entryComponents: [
     fromComponents.ModalComponent
   ]
 })
