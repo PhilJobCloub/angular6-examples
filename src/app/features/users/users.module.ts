@@ -19,10 +19,10 @@ import { UsersRoutingModule } from './users-routing.module';
 
 /***** effects *****/
 import { EffectsModule } from '@ngrx/effects';
-import { UsersEffects } from './store/users.effetcs';
+import { UsersEffects } from '@app/features/users/store/effects/users.effects';
 
 /***** reducers *****/
-import { usersReducer } from './store/users.reducers';
+import { usersReducer } from '@app/features/users/store/reducers/users.reducers';
 
 @NgModule({
   imports: [
@@ -34,7 +34,6 @@ import { usersReducer } from './store/users.reducers';
     UsersRoutingModule,
     StoreModule.forFeature('usersState', usersReducer),
     EffectsModule.forFeature([UsersEffects])
-    
   ],
   declarations: [
     fromComponents.components,

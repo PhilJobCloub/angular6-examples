@@ -5,27 +5,27 @@ import { type } from '@app/shared/helpers/type.helpers';
 import { Membership } from '@app/features/membership/models/membership.model';
 
 export const ActionTypes = {
-    FETCH_MEMBERSHIP:               type('[Membership] Fetch membership'),
-    ADD_MEMBERSHIP:                 type('[Companies] Add a company'),
-    DELETE_MEMBERSHIP:              type('[Companies] Delete a company')
+    FETCH_MEMBERSHIP_START:               type('[Membership] Fetch membership starts'),
+    FETCH_MEMBERSHIP_SUCCEED:             type('[Membership] Fetch membership succeed'),
+    FETCH_MEMBERSHIP_FAILED:              type('[Membership] Fetch membership failed'),
 };
 
-export class FetchMembershipActions implements Action {
-    type = ActionTypes.FETCH_MEMBERSHIP;
+
+export class FecthMembershipStartActions implements Action {
+    readonly type = ActionTypes.FETCH_MEMBERSHIP_START;
+}
+
+export class FecthMembershipFailedActions implements Action {
+    readonly type = ActionTypes.FETCH_MEMBERSHIP_SUCCEED;
     constructor(public payload : Membership[]) {}
 }
 
-/* export class AddMembershipActions implements Action {
-    type = ActionTypes.ADD_MEMBERSHIP;
-    constructor(public payload : Membership) {}
+export class FecthMembershipSucceedActions implements Action {
+    readonly type = ActionTypes.FETCH_MEMBERSHIP_FAILED;
+    constructor(public payload : any) {}
 }
 
-export class DeleteCompanyActions implements Action {
-    type = ActionTypes.DELETE_MEMBERSHIP;
-    constructor(public payload : number) {}
-} */
-
 export type Actions
-  = FetchMembershipActions;
-/*   | AddMembershipActions
-  | DeleteCompanyActions; */
+    = FecthMembershipStartActions
+    | FecthMembershipFailedActions
+    | FecthMembershipSucceedActions;

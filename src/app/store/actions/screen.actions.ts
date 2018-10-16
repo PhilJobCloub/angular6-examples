@@ -12,10 +12,10 @@ const TABLET_MAX_WIDTH = 1024; // Adjust as needed
 export class SetScreen implements Action {
   type = ActionTypes.SET_SCREEN;
     payload : Readonly<{
-      mobile : boolean,
-      tablet : boolean,
-      desktop : boolean
-    }>;
+    mobile : boolean,
+    tablet : boolean,
+    desktop : boolean
+  }>;
 
   public constructor(width : number) {
     const mobile = width <= MOBILE_MAX_WIDTH;

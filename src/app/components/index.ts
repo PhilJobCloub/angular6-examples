@@ -5,14 +5,14 @@ import { TestEllipsisComponent } from './test-ellipsis/test-ellipsis.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { JobsTableComponent } from './jobs-table/jobs-table.component';
-import { TranslusionComponent } from './translusion/translusion.component';
+import { TransclusionComponent } from './transclusion/transclusion.component';
 import { ObservablesComponent } from './observables/observables.component';
 
 const examplesComponent: any[] = [
   JobsComponent,
   JobsListComponent,
   JobsTableComponent,
-  TranslusionComponent,
+  TransclusionComponent,
   ObservablesComponent
   
 ];
@@ -42,7 +42,7 @@ export { TestEllipsisComponent } from './test-ellipsis/test-ellipsis.component';
 export { JobsComponent } from './jobs/jobs.component';
 export { JobsListComponent } from './jobs-list/jobs-list.component';
 export { JobsTableComponent } from './jobs-table/jobs-table.component';
-export { TranslusionComponent } from './translusion/translusion.component';
+export { TransclusionComponent } from './transclusion/transclusion.component';
 export { ObservablesComponent } from './observables/observables.component';
 
 

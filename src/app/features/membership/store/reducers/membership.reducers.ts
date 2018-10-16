@@ -21,8 +21,8 @@ export interface State {
 /***** initial state  ****/
 const initialState : State = {
     entities : {
-        '12345' : { id : 12345, name: 'my member', description : 'this is a description'},
-        '6757' : { id : 6757, name: 'my member new', description : 'this is a member description'}
+        '12345' : { id : 12345, title: 'my member', body : 'this is a description'},
+        '6757' : { id : 6757, title: 'my member new', body : 'this is a member description'}
     }
 };
 

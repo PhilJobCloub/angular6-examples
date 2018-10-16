@@ -19,7 +19,6 @@ export class FetchUsersStartActions implements Action {
   constructor(public payload? : any) { }
 }
 
-
 export class FetchUsersSucceedActions implements Action {
     readonly type = ActionTypes.FETCH_USERS_SUCCEED;
     constructor(public payload : User[]) { }

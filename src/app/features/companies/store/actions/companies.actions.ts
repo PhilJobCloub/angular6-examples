@@ -5,7 +5,7 @@ import { type } from '@app/shared/helpers/type.helpers';
 import { Company } from '@app/features/companies/models/company.model';
 
 export const ActionTypes = {
-    FETCH_COMPANIES:                  type('[Companies] Fetch companies'),
+    FETCH_COMPANIES:                type('[Companies] Fetch companies'),
     ADD_COMPANY:                    type('[Companies] Add a company'),
     DELETE_COMPANY:                 type('[Companies] Delete a company')
 };

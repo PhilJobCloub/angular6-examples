@@ -14,26 +14,26 @@ import { ActionTypes } from '@app/features/membership/store/actions/membership.a
 import { User } from '@app/features/users/models/user.model';
 
 /****** reducer ****/
-import * as fromUsers from '@app/features/users/store/users.reducers';
+import * as fromMembership from '@app/features/membership/store/reducers/membership.reducers';
 
 @Injectable()
 export class UsersEffects {
     constructor(
         private actions$ : Actions,
         private _membershipService : MembershipService,
-        private store : Store<fromUsers.FeatureState>) {
+        private store : Store<fromMembership.FeatureState>) {
 
     }
 
     @Effect()
     usersFetch = this.actions$
-    .ofType(ActionTypes.FETCH_MEMBERSHIP)
-    .pipe(switchMap((action : MembershipActions.FetchMembershipActions) => {
+    .ofType(ActionTypes.FETCH_MEMBERSHIP_START)
+    .pipe(switchMap((action : MembershipActions.FecthMembershipStartActions) => {
         return this._membershipService
                     .list(null)
                     .pipe(map((users) => {
                         return {
-                            type: ActionTypes.FETCH_MEMBERSHIP,
+                            type: ActionTypes.FETCH_MEMBERSHIP_START,
                             payload: users
                             };
                         }

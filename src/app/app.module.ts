@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*****Components****/
 import { AppComponent } from './app.component';
-// import { ObservablesComponent } from './components/observables/observables.component';
 import * as fromComponents from './components';
 
 const ImportedComponents : any[] = [
@@ -34,7 +33,6 @@ import { CustomSerializer, effects, reducers } from './store';
 /*******/
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
 
 const ImportedModules : any[] = [
   FormsModule,

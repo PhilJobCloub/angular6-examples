@@ -6,19 +6,20 @@ import { Observable } from 'rxjs';
 import { User } from '@app/features/users/models/user.model';
 
 /**** reducer ****/
-import * as fromUsers from '@app/features/users/store/users.reducers';
+import * as fromUsers from '@app/features/users/store/reducers/users.reducers';
 
 /**** selectors ****/
-import * as fromUsersSelectors from '@app/features/users/store/users.selectors';
+import * as fromUsersSelectors from '@app/features/users/store/selectors/users.selectors';
 
 /**** actions ****/
-import * as usersActions from '@app/features/users/store/users.actions';
+import * as usersActions from '@app/features/users/store/actions/users.actions';
 
 @Component({
   selector: 'app-user-details',
   template: `
     <h1>USER DETAILS</h1>
-  {{ (user$ | async) | json }}
+
+  <router-outlet></router-outlet>
   `,
   styles : [
       ``
@@ -28,27 +29,10 @@ import * as usersActions from '@app/features/users/store/users.actions';
 export class UserDetailsPage implements OnInit {
   public user$ : Observable<User>
 
-
   constructor(private store: Store<fromUsers.FeatureState>) {}
 
   ngOnInit() {
     this.user$ = this.store.select(fromUsersSelectors.getUserById);
   }
 
-  /*
-      this._activatedRoute.params.subscribe(
-      (params: Params) => {
-        let userId = params['userId'];
-        this.readUser(userId)
-    });
-  readUser(userId) {
-    this._userService
-        .read(userId)
-        .subscribe(
-          (user : User) => {
-            this.user = user;
-          }
-        )
-  }
-  */
 }

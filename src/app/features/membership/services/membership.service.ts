@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-/*********** Import Models *********/
+/*********** Import Model *********/
 import { Membership } from '@app/features/membership/models/membership.model';
 
 /*********** Import Resource service *********/

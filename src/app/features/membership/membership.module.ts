@@ -9,10 +9,15 @@ import { SharedModule } from '@app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
-/*****Components****/
-import * as fromComponents from '@app/features/membership/components';
+/***** components ****/
+import * as fromComponents from './components';
 
-import { membershipReducer } from '@app/features/membership/store/reducers/membership.reducers';
+/***** reducer ****/
+import { membershipReducer } from '@app/features/membership/store/reducers/membership.reducer';
+
+/***** effects *****/
+import { EffectsModule } from '@ngrx/effects';
+import { MembershipEffects } from './store/effects/membership.effects';
 
 @NgModule({
   imports: [
@@ -20,9 +25,11 @@ import { membershipReducer } from '@app/features/membership/store/reducers/membe
     SharedModule,
     HttpClientModule,
     MembershipRoutingModule,
-    StoreModule.forFeature('membershipState', membershipReducer)
+    StoreModule.forFeature('membershipState', membershipReducer),
+    EffectsModule.forFeature([MembershipEffects])
   ],
-  declarations: [ ...fromComponents.components ]
+  declarations: [
+    ...fromComponents.components
+  ]
 })
-
 export class MembershipModule { }

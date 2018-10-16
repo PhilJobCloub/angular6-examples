@@ -1,5 +1,5 @@
-import { Component,OnChanges, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router  } from '@angular/router';
 
 @Component({
   selector: 'app-users-home',
@@ -24,6 +24,4 @@ export class UsersHomePage  {
 
   // get param if in queryParams
   constructor() {}
-
-  
 }

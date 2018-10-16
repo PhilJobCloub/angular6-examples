@@ -1,3 +1,12 @@
-<p>
-  membership works!
+<div>{{ (users$ | async) | json }}</div>
+<hr/>
+<p *ngIf="!(membershipList$ | async)?.length; else membershiplistIsEmpty">
+  List is empty please add some new users
 </p>
+
+<ng-template #membershiplistIsEmpty>
+    <app-list-items 
+      [items]="membershipList$ | async"
+      [type]="'obj'">
+    </app-list-items>
+</ng-template>
