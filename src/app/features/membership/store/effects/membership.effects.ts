@@ -14,7 +14,7 @@ import { ActionTypes } from '@app/features/membership/store/actions/membership.a
 import { Membership } from '@app/features/membership/models/membership.model';
 
 /****** reducer ****/
-import * as fromUsers from '@app/features/users/store/users.reducers';
+import * as fromUsers from '@app/features/users/store/reducers/users.reducers';
 
 @Injectable()
 export class MembershipEffects {

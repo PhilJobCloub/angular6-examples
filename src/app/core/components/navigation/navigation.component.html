@@ -1,26 +1,34 @@
 <ul>
-  <li>
-      <a 
-        [routerLink]="['users']"
-        routerLinkActive="active-link"
-        #rla_users="routerLinkActive"> 
-        {{ rla_users.isActive ? 'users Bob' : 'users' }}
-      </a>
-  </li>
-  <li>
-      <a 
-        [routerLink]="['companies']"
-        routerLinkActive="active-link"
-        #rla_companies="routerLinkActive"> 
-        {{ rla_companies.isActive ? 'companies Selective' : 'companies' }}
-      </a>
-  </li>
-  <li>
-    <a 
-      [routerLink]="['membership']"
-      routerLinkActive="active-link"
-      #rla_membership="routerLinkActive"> 
-      {{ rla_membership.isActive ? 'membership Selective' : 'membership' }}
-    </a>
-</li>
+    <li>
+        <a 
+            [routerLink]="['users']"
+            routerLinkActive="active-link"
+            #rla_users="routerLinkActive"> 
+            {{ rla_users.isActive ? 'users Bob' : 'users' }}
+        </a>
+    </li>
+    <li>
+        <a 
+            [routerLink]="['companies']"
+            routerLinkActive="active-link"
+            #rla_companies="routerLinkActive"> 
+            {{ rla_companies.isActive ? 'companies Selective' : 'companies' }}
+        </a>
+    </li>
+    <li>
+        <a 
+            [routerLink]="['posts']"
+            routerLinkActive="active-link"
+            #rla_posts="routerLinkActive"> 
+            {{ rla_posts.isActive ? 'posts Selective' : 'posts' }}
+        </a>
+    </li>
+    <li>
+        <a
+            [routerLink]="['membership']"
+            routerLinkActive="active-link"
+            #rla_membership="routerLinkActive">
+            {{ rla_membership.isActive ? 'membership Selective' : 'membership' }}
+        </a>
+    </li>
 </ul>

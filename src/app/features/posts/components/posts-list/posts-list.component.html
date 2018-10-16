@@ -1,0 +1,11 @@
+<p *ngIf="!posts?.length; else postlistIsEmpty">
+  List is empty please add some new posts
+</p>
+<ng-template #postlistIsEmpty>
+    <app-list-items 
+      [items]="posts"
+      (handleOnClickEvent)="removePost($event)"
+      (handleOnItemClickEvent)="navigateToPostDetails($event)"
+      [type]="'obj'">
+    </app-list-items>
+</ng-template>
