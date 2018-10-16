@@ -43,9 +43,8 @@ export class MembershipComponent implements OnInit {
       this.membershipList$ = this.router.parent.parent.params.switchMap(params => {
         return this.store
           .select(fromMembershipSelectors.getMembershipList)
-          .map((memberships : any) => memberships.filter(membertship =>   {
-            console.log( membertship.userId === parseInt(params.userId, 10));
-            return membertship.userId === parseInt(params.userId, 10)
+          .map((memberships : any) => memberships.filter(membership =>   {
+            return membership.userId === parseInt(params.userId, 10);
           }
             ));
       });
