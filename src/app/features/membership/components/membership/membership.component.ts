@@ -17,7 +17,7 @@ import * as fromMembershipSelectors from '@app/features/membership/store/selecto
 /**** actions ****/
 import * as membershipActions from '@app/features/membership/store/actions/membership.actions';
 /**** selectors ****/
-import * as fromUsersSelectors from '@app/features/users/store/users.selectors';
+import * as fromUsersSelectors from '@app/features/users/store/selectors/users.selectors';
 
 @Component({
   selector: 'app-membership',

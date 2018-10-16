@@ -4,43 +4,44 @@ import { UtilsHelpers } from '@app/shared/helpers/utils.helpers';
 import * as fromApp from '@app/store';
 
 /***** actions  ****/
-import * as UsersActions from '@app/features/users/store/users.actions';
+import * as PostsActions from '@app/features/posts/store/actions/posts.actions';
 
 /***** models  ****/
-import { User } from '@app/features/users/models/user.model';
+import { Post } from '@app/features/posts/models/post.model';
 
 /***** state interface  ****/
 export interface FeatureState extends fromApp.State {
-    usersState : State;
+    postsState: State
   }
 
 export interface State {
-    entities : { [id : number ] : User };
-    loaded : boolean;
-    loading : boolean;
-    errors : any;
+    entities: { [id : number ]: Post },
+    loaded: boolean;
+    loading: boolean;
+    errors : any
 }
 
 /***** initial state  ****/
-const initialState : State = {
+const initialState: State = {
     entities : {},
     loaded: false,
     loading: false,
     errors : null
-};
+}
 
 /***** methods  ****/
-const fetchingUsersStart = (state, action) => {
+const fetchingPostsStart = (state, action) => {
     return UtilsHelpers.prototype.updateObject(state,
       {
         loading: true,
-        loaded : false,
+        loaded :false,
       });
   };
 
-const fetchingUsersSucceed = (state, action) => {
+const fetchingPostsSucceed = (state, action) => {
     /**use entity pattern ***/
     const entities = UtilsHelpers.prototype.flatten(action.payload);
+    
     return UtilsHelpers.prototype.updateObject(state,
         {
             loading: false,
@@ -50,7 +51,7 @@ const fetchingUsersSucceed = (state, action) => {
         });
 };
 
-const fetchingUsersFailed = (state, action) => {
+const fetchingPostsFailed = (state, action) => {
     const errors = action.payload;
     return UtilsHelpers.prototype.updateObject(state,
         {
@@ -60,11 +61,11 @@ const fetchingUsersFailed = (state, action) => {
         });
 };
 
-const addUser = (state, action) => {
-    const user : User = action.payload;
+const addPost = (state, action) => {
+    const post : Post = action.payload;
     const entities = {
         ...state.entities,
-        [user.id]: user,
+        [post.id]: post,
       };
 
     return UtilsHelpers.prototype.updateObject(state,
@@ -73,9 +74,9 @@ const addUser = (state, action) => {
         });
 };
 
-const deleteUser = (state, action) => {
-    const userId = action.payload;
-    const { [userId]: removed, ...entities } = state.entities;
+const deletePost = (state, action) => {
+    const postId = action.payload;
+    const { [postId]: removed, ...entities } = state.entities;
 
     return UtilsHelpers.prototype.updateObject(state,
         {
@@ -83,13 +84,16 @@ const deleteUser = (state, action) => {
         });
 };
 /***** reducer  ****/
-export function usersReducer(state = initialState, action : UsersActions.Actions) : State {
+export function postsReducer(state = initialState, action: PostsActions.Actions): State {
     switch (action.type) {
-        case UsersActions.ActionTypes.FETCH_USERS_START: { return fetchingUsersStart(state, action); }
-        case UsersActions.ActionTypes.FETCH_USERS_SUCCEED: { return fetchingUsersSucceed(state, action); }
-        case UsersActions.ActionTypes.FETCH_USERS_FAILED: { return fetchingUsersFailed(state, action); }
-        case UsersActions.ActionTypes.ADD_USER: { return addUser(state, action); }
-        case UsersActions.ActionTypes.DELETE_USER: { return deleteUser(state, action); }
+        case PostsActions.ActionTypes.FETCH_POSTS_START: { return fetchingPostsStart(state, action) };
+        case PostsActions.ActionTypes.FETCH_POSTS_SUCCEED: { return fetchingPostsSucceed(state, action)};
+        case PostsActions.ActionTypes.FETCH_POSTS_FAILED: { return fetchingPostsFailed(state, action)};
+        case PostsActions.ActionTypes.ADD_POST: { return addPost(state, action)};
+        case PostsActions.ActionTypes.DELETE_POST: { return deletePost(state, action)};
         default: return state;
     }
 }
+
+
+  

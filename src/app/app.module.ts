@@ -34,8 +34,7 @@ import { CustomSerializer, effects, reducers } from './store';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
-
-const ImportedModules : any[] = [
+const ImportedModules: any[] = [
   FormsModule,
   ReactiveFormsModule,
   DynamicFormsModule,
@@ -50,7 +49,6 @@ const ImportedModules : any[] = [
   StoreRouterConnectingModule,
   !environment.production ? StoreDevtoolsModule.instrument() : []
 ];
-
 
 
 @NgModule({

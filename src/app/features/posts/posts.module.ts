@@ -15,14 +15,14 @@ import * as fromComponents from './components';
 import * as fromPages from './pages';
 
 /***** routing ****/
-import { UsersRoutingModule } from './users-routing.module';
+import { PostsRoutingModule } from './posts-routing.module';
 
 /***** effects *****/
 import { EffectsModule } from '@ngrx/effects';
-import { UsersEffects } from '@app/features/users/store/effects/users.effects';
+import { PostsEffects } from '@app/features/posts/store/effects/posts.effects';
 
 /***** reducers *****/
-import { usersReducer } from '@app/features/users/store/reducers/users.reducers';
+import { postsReducer } from '@app/features/posts/store/reducers/posts.reducers';
 
 @NgModule({
   imports: [
@@ -31,9 +31,10 @@ import { usersReducer } from '@app/features/users/store/reducers/users.reducers'
     RouterModule,
     HttpClientModule,
     SharedModule,
-    UsersRoutingModule,
-    StoreModule.forFeature('usersState', usersReducer),
-    EffectsModule.forFeature([UsersEffects])
+    PostsRoutingModule,
+    StoreModule.forFeature('postsState', postsReducer),
+    EffectsModule.forFeature([PostsEffects])
+    
   ],
   declarations: [
     fromComponents.components,
@@ -44,7 +45,7 @@ import { usersReducer } from '@app/features/users/store/reducers/users.reducers'
     fromPages.pages
   ],
   entryComponents : [
-    fromComponents.UsersListComponent
+    fromComponents.PostsListComponent
   ]
 })
-export class UsersModule { }
+export class PostsModule { }
