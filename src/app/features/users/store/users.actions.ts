@@ -16,33 +16,33 @@ export const ActionTypes = {
 
 export class FetchUsersStartActions implements Action {
   type = ActionTypes.FETCH_USERS_START;
-  constructor(public payload?: any) { }
+  constructor(public payload? : any) { }
 }
 
 
 export class FetchUsersSucceedActions implements Action {
     readonly type = ActionTypes.FETCH_USERS_SUCCEED;
-    constructor(public payload: User[]) { }
+    constructor(public payload : User[]) { }
   }
 
 export class FetchUsersFailedActions implements Action {
     type = ActionTypes.FETCH_USERS_FAILED;
-    constructor(public payload?: any) { }
+    constructor(public payload? : any) { }
 }
 
 export class AddUserActions implements Action {
     readonly type = ActionTypes.ADD_USER;
-    constructor(public payload: User) { }
+    constructor(public payload : User) { }
 }
 
 export class DeleteUserActions implements Action {
     type = ActionTypes.DELETE_USER;
-    constructor(public payload: number) { }
+    constructor(public payload : number) { }
 }
 
 export class UpdateUserActions implements Action {
     type = ActionTypes.UPDATE_USER;
-    constructor(public payload: User) { }
+    constructor(public payload : User) { }
 }
 
 export type Actions
@@ -51,5 +51,5 @@ export type Actions
   | FetchUsersFailedActions
   | AddUserActions
   | DeleteUserActions
-  | UpdateUserActions
+  | UpdateUserActions;
 

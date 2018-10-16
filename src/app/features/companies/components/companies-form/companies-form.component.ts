@@ -1,5 +1,5 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
-import { Validators, FormControl, FormGroup, FormBuilder  } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
 
 /***** models *****/
 import { Company } from '../../models/company.model';
@@ -15,14 +15,14 @@ import { EmailValidator } from '@app/shared/validators/email/email.validator';
 })
 export class CompaniesFormComponent implements OnInit {
 
-  public companyForm: FormGroup;
+  public companyForm : FormGroup;
 
   @Output() handleAddCompany : EventEmitter<Company> = new EventEmitter();
-  
+
   constructor(
-    private _formbuilder: FormBuilder
+    private _formbuilder : FormBuilder
     ) {}
-  
+
   ngOnInit() {
     // formulaire
     this.companyForm = this._formbuilder.group({
@@ -34,28 +34,26 @@ export class CompaniesFormComponent implements OnInit {
         Validators.required
       ]),
       card : new FormControl(null)
-    })   
+    });
   }
 
   // convenience getter for easy access to form fields
-  get f() { 
-    return this.companyForm.controls; 
+  get f() {
+    return this.companyForm.controls;
   }
 
   addCompany() {
-     let newCompany : Company =  new Company(
-      this.companyForm.value.name, 
-      this.companyForm.value.description,
-      Math.round(Math.random() * 2000))
+    const newCompany : Company =  new Company(
+    this.companyForm.value.name,
+    this.companyForm.value.description,
+    Math.round(Math.random() * 2000));
 
+    // reset form
+    this.companyForm.reset();
 
-  // reset form
-  this.companyForm.reset();
-
-  // emit the event
-  this.handleAddCompany.emit(newCompany)
- 
-  }
+    // emit the event
+    this.handleAddCompany.emit(newCompany);
+    }
 
 
 

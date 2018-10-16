@@ -8,13 +8,12 @@ import * as fromPages from '@app/features/companies/pages';
 /*****Pages****/
 import * as fromComponents from '@app/features/companies/components';
 
-export const routes: Routes = [
+export const routes : Routes = [
   {
     path: '',
     component: fromPages.CompaniesHomePage,
     children: []
   }
-  
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 
 /**** main reducer ****/
@@ -9,16 +9,14 @@ export const getCompaniesState = createFeatureSelector<fromFeatures.State>('comp
 export const getAllCompanies = createSelector(
     getCompaniesState,
     state => {
-        
-        return state.entities
+        return state.entities;
     }
-)
+);
 
 /* transform my obj in an array */
 export const getCompaniesList = createSelector(
     getAllCompanies,
     (entities) => {
-        
-        return Object.keys(entities).map(key => entities[key])
+        return Object.keys(entities).map(key => entities[key]);
     }
-)
+);

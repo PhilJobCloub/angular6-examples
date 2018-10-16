@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable, Observer} from 'rxjs/Rx';
+import { Observable, Observer } from 'rxjs/Rx';
 import { SubjectService } from '@app/services/subject.service';
 
 @Component({
@@ -29,7 +29,6 @@ export class ObservablesComponent implements OnInit {
           }
 
           return stuff
-          
         }
       );
 

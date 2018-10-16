@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable} from 'rxjs/observable';
+import { Observable } from 'rxjs/observable';
 
 /***** models *****/
 import { Company } from '../../models/company.model';
@@ -35,7 +35,7 @@ import * as fromCompaniesSelectors from '@app/features/companies/store/selectors
 export class CompaniesHomePage implements OnInit  {
 
   public companies$ : Observable<Company[]>;
-  constructor(private _store: Store<fromCompanies.FeatureState>) { }
+  constructor(private _store : Store<fromCompanies.FeatureState>) { }
 
   ngOnInit() {
     this.companies$ = this._store.select(fromCompaniesSelectors.getCompaniesList);

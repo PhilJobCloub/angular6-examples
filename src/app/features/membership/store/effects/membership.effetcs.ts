@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 /***** services  ****/
-import { UsersService } from '@app/features/users/services/users.service';
+import { MembershipService } from '@app/features/membership/services/membership.service';
 
 /***** actions  ****/
-import * as UsersActions from '@app/features/users/store/users.actions';
-import { ActionTypes } from '@app/features/users/store/users.actions';
+import * as MembershipActions from '@app/features/membership/store/actions/membership.actions';
+import { ActionTypes } from '@app/features/membership/store/actions/membership.actions';
 
 /***** models  ****/
 import { User } from '@app/features/users/models/user.model';
@@ -20,21 +20,20 @@ import * as fromUsers from '@app/features/users/store/users.reducers';
 export class UsersEffects {
     constructor(
         private actions$ : Actions,
-        private _usersService : UsersService,
+        private _membershipService : MembershipService,
         private store : Store<fromUsers.FeatureState>) {
 
     }
 
-
     @Effect()
     usersFetch = this.actions$
-    .ofType(ActionTypes.FETCH_USERS_START)
-    .pipe(switchMap((action : UsersActions.FetchUsersStartActions) => {
-        return this._usersService
+    .ofType(ActionTypes.FETCH_MEMBERSHIP)
+    .pipe(switchMap((action : MembershipActions.FetchMembershipActions) => {
+        return this._membershipService
                     .list(null)
                     .pipe(map((users) => {
                         return {
-                            type: ActionTypes.FETCH_USERS_SUCCEED,
+                            type: ActionTypes.FETCH_MEMBERSHIP,
                             payload: users
                             };
                         }
