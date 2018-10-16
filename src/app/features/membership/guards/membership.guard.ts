@@ -52,7 +52,7 @@ export class MembershipGuard implements CanActivate {
       .pipe(
           switchMap(() => {
               const id = parseInt(route.params.userId, 10);
-              return this.hasUser(id)
+              return this.hasUser(id);
           }
           )
       );

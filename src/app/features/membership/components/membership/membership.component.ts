@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
@@ -9,9 +9,7 @@ import 'rxjs/add/operator/map';
 import { Membership } from '@app/features/membership/models/membership.model';
 
 /**** reducer ****/
-import * as fromMembership from '@app/features/membership/store/reducers/membership.reducer';
 import * as fromRoot from '@app/store/reducers';
-
 
 /**** selectors ****/
 import * as fromMembershipSelectors from '@app/features/membership/store/selectors/membership.selectors';
@@ -30,26 +28,30 @@ export class MembershipComponent implements OnInit {
 
   public membershipList$ : Observable<Membership[]>;
   public users$ : Observable<Membership[]>;
-  
 
-  constructor(
+  constructor (
     private router : ActivatedRoute,
     private store : Store<fromRoot.State>
     ) {
       this.users$ = this.router.parent.parent.params.switchMap(params => {
-
         return this.store
           .select(fromUsersSelectors.getUsersList)
-          .map((users : any) => users.find(user => user.id === parseInt(params.userId)
+          .map((users : any) => users.find(user => user.id === parseInt(params.userId, 10)
+            ));
+      });
+
+      this.membershipList$ = this.router.parent.parent.params.switchMap(params => {
+        return this.store
+          .select(fromMembershipSelectors.getMembershipList)
+          .map((memberships : any) => memberships.filter(membertship =>   {
+            console.log( membertship.userId === parseInt(params.userId, 10));
+            return membertship.userId === parseInt(params.userId, 10)
+          }
             ));
       });
     }
 
   ngOnInit() {
     this.store.dispatch(new membershipActions.FecthMembershipStartActions());
-    this.membershipList$ = this.store.select(fromMembershipSelectors.getMembershipList);
   }
-
-  
-
 }
