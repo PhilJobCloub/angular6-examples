@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 
 /*******Components*******/
@@ -17,7 +17,6 @@ import * as fromPipes from './pipes';
   imports: [
     CommonModule,
     HttpClientModule
-    
   ],
   declarations: [
     ...fromComponents.components,

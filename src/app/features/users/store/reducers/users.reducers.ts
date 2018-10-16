@@ -11,37 +11,36 @@ import { User } from '@app/features/users/models/user.model';
 
 /***** state interface  ****/
 export interface FeatureState extends fromApp.State {
-    usersState: State
+    usersState : State;
   }
 
 export interface State {
-    entities: { [id : number ]: User },
-    loaded: boolean;
-    loading: boolean;
-    errors : any
+    entities : { [id : number ] : User };
+    loaded : boolean;
+    loading : boolean;
+    errors : any;
 }
 
 /***** initial state  ****/
-const initialState: State = {
+const initialState : State = {
     entities : {},
     loaded: false,
     loading: false,
     errors : null
-}
+};
 
 /***** methods  ****/
 const fetchingUsersStart = (state, action) => {
     return UtilsHelpers.prototype.updateObject(state,
       {
         loading: true,
-        loaded :false,
+        loaded : false,
       });
   };
 
 const fetchingUsersSucceed = (state, action) => {
     /**use entity pattern ***/
     const entities = UtilsHelpers.prototype.flatten(action.payload);
-    
     return UtilsHelpers.prototype.updateObject(state,
         {
             loading: false,
@@ -84,16 +83,13 @@ const deleteUser = (state, action) => {
         });
 };
 /***** reducer  ****/
-export function usersReducer(state = initialState, action: UsersActions.Actions): State {
+export function usersReducer(state = initialState, action : UsersActions.Actions) : State {
     switch (action.type) {
-        case UsersActions.ActionTypes.FETCH_USERS_START: { return fetchingUsersStart(state, action) };
-        case UsersActions.ActionTypes.FETCH_USERS_SUCCEED: { return fetchingUsersSucceed(state, action)};
-        case UsersActions.ActionTypes.FETCH_USERS_FAILED: { return fetchingUsersFailed(state, action)};
-        case UsersActions.ActionTypes.ADD_USER: { return addUser(state, action)};
-        case UsersActions.ActionTypes.DELETE_USER: { return deleteUser(state, action)};
+        case UsersActions.ActionTypes.FETCH_USERS_START: { return fetchingUsersStart(state, action); }
+        case UsersActions.ActionTypes.FETCH_USERS_SUCCEED: { return fetchingUsersSucceed(state, action); }
+        case UsersActions.ActionTypes.FETCH_USERS_FAILED: { return fetchingUsersFailed(state, action); }
+        case UsersActions.ActionTypes.ADD_USER: { return addUser(state, action); }
+        case UsersActions.ActionTypes.DELETE_USER: { return deleteUser(state, action); }
         default: return state;
     }
 }
-
-
-  

@@ -2,16 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-/*****Pages****/
-import * as fromPages from '@app/features/companies/pages';
-
-/*****Pages****/
-import * as fromComponents from '@app/features/companies/components';
+/*****Components****/
+import * as fromComponents from '@app/features/membership/components';
 
 export const routes : Routes = [
   {
     path: '',
-    component: fromPages.CompaniesHomePage,
+    component: fromComponents.MembershipComponent,
     children: []
   }
 ];
@@ -21,5 +18,5 @@ export const routes : Routes = [
   exports: [RouterModule]
 })
 
-export class CompaniesRoutingModule { }
+export class MembershipRoutingModule { }
 
