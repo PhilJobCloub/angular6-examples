@@ -1,68 +1,71 @@
 import { UtilsHelpers } from '@app/shared/helpers/utils.helpers';
 
+/***** models  ****/
+import { Membership } from '@app/features/membership/models/membership.model';
+
 /**** main reducer ****/
 import * as fromApp from '@app/store';
 
 /***** actions  ****/
 import * as MembershipActions from '@app/features/membership/store/actions/membership.actions';
 
-/***** models  ****/
-import { Membership } from '@app/features/membership/models/membership.model';
-
-/***** state interface  ****/
-export  interface FeatureState extends fromApp.State {
+export interface FeatureState extends fromApp.State {
     membershipState : State;
 }
 
+
 export interface State {
-    entities : { [id : number] : Membership };
+    entities : { [id : number] :  Membership };
+    loaded : boolean;
+    loading : boolean;
+    errors : any;
 }
 
 /***** initial state  ****/
 const initialState : State = {
-    entities : {
-        '12345' : { id : 12345, title: 'my member', body : 'this is a description'},
-        '6757' : { id : 6757, title: 'my member new', body : 'this is a member description'}
-    }
+    entities : {},
+    loaded: false,
+    loading: false,
+    errors : null
 };
 
 /***** methods  ****/
-/* const fetchMembership = (state, action) => {
-    return UtilsHelpers.prototype.updateObject(this.state,
-        {
+const fetchingMembershipStart = (state, action) => {
+    return UtilsHelpers.prototype.updateObject(state,
+      {
+        loading : true,
+        loaded : false,
+      });
+  };
 
-        });
-}; */
-
-/* const addMembership = (state, action) => {
-
-    const newCompany = action.payload;
-    const entities = {
-        ...state.entities,
-        [newCompany.id] : newCompany
-    };
+const fetchingMembershipSucceed = (state, action) => {
+    /**use entity pattern ***/
+    const entities = UtilsHelpers.prototype.flatten(action.payload);
     return UtilsHelpers.prototype.updateObject(state,
         {
+            loading : false,
+            loaded : true,
+            errors : null,
             entities
         });
 };
 
-const deleteMembership = (state, action) => {
-    const deleteCompanyId = action.payload;
-    const { [deleteCompanyId]: removed, ...entities } = state.entities;
-
+const fetchingMembershipFailed = (state, action) => {
+    const errors = action.payload;
     return UtilsHelpers.prototype.updateObject(state,
         {
-            entities
+            loading : false,
+            loaded : true,
+            errors
         });
-}; */
+};
 
 /***** reducer  ****/
 export function membershipReducer(state = initialState , action : MembershipActions.Actions) : State {
     switch (action.type) {
-        // case MembershipActions.ActionTypes.FETCH_MEMBERSHIP: { return fetchMembership(state, action); }
-        // case MembershipActions.ActionTypes.ADD_MEMBERSHIP: { return addMembership(state, action); }
-        // case MembershipActions.ActionTypes.DELETE_MEMBERSHIP: { return deleteMembership(state, action); }
+        case MembershipActions.ActionTypes.FETCH_MEMBERSHIP_START: { return fetchingMembershipStart(state, action); }
+        case MembershipActions.ActionTypes.FETCH_MEMBERSHIP_SUCCEED: { return fetchingMembershipSucceed(state, action); }
+        case MembershipActions.ActionTypes.FETCH_MEMBERSHIP_FAILED: { return fetchingMembershipFailed(state, action); }
         default: return state;
     }
 }
