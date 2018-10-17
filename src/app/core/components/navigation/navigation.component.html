@@ -31,7 +31,11 @@
             {{ rla_membership.isActive ? 'membership Selective' : 'membership' }}
         </a>
     </li>
-    <li>
+    <li class="flex">
+        <span>{{profile?.name}}</span>
+        <div class="mat-card-avatar example-header-image"
+            [ngStyle]="{'background-image':' url(' + profile?.picture+ ')'}">
+        </div>
         <button
             (click)="logout()">
             Logout

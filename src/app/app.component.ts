@@ -15,6 +15,7 @@ import { AppSandboxService } from './services/app-sandbox.service';
 import { SubjectService } from './services/subject.service';
 import { AppModalService } from './services/app-modal.service';
 import { AuthService } from './services/auth/auth.service';
+import { UserProfileService } from '@app/services/user-profile.service';
 
 /* config  */
 import * as config from '@app/config/registration-form-template';
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
 
   @ViewChild(DynamicFormComponent) form : DynamicFormComponent;
   public today = new Date();
+  public profile;
   public title : string = 'hello-world';
   public name : string = 'test';
   public valItem : string = 'my new value';
@@ -54,12 +56,13 @@ export class AppComponent implements OnInit {
     private _service : SubjectService,
     private _appSandBox : AppSandboxService,
     private _appModalService : AppModalService,
+    private _userProfileService : UserProfileService,
     private _swUpdate : SwUpdate) {
     this.age = 50;
 
-    // handle aAuthentication
-    this._authService.handleAuthentication();
-
+    this._userProfileService.userProfile$.subscribe(profile => this.profile = profile);
+ // handle aAuthentication
+ this._authService.handleAuthentication();
     // Create observable from the window event
     this.resize$ = fromEvent(window, 'resize')
     .pipe(
@@ -80,6 +83,7 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
+
     this._service.userActivated.subscribe(
       (val) => {
         console.log(val)
@@ -128,5 +132,9 @@ export class AppComponent implements OnInit {
   get isAuthenticated() {
     return this._authService.isAuthenticated();
   }
+
+
+
+
 
 }

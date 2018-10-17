@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { UserProfileService } from '@app/services/user-profile.service';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -17,6 +19,7 @@ import * as auth0 from 'auth0-js';
 
 export class AuthService {
   userProfile : any;
+  public profile$ = new BehaviorSubject(0)
   requestedScopes = 'openid profile read:messages write:messages';
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
@@ -27,7 +30,9 @@ export class AuthService {
     scope: this.requestedScopes
   });
 
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    private _userProfileService : UserProfileService) {}
 
   public login(): void {
     this.auth0.authorize();
@@ -57,9 +62,13 @@ export class AuthService {
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
+
+      this.getProfile((err, profile) => {
+        this._userProfileService.setUserProfile(profile);
+      });
     });
   }
-  public getProfile(cb: any): void {
+  public getProfile(cb : any) : void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access token must exist to fetch profile');
@@ -92,6 +101,8 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('scopes');
+
+    this._userProfileService.setUserProfile({});
     // Go back to the home route
     this.router.navigate(['/']);
   }
@@ -100,6 +111,7 @@ export class AuthService {
     // Check whether the current time is past the
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
+   
     return new Date().getTime() < expiresAt;
   }
 

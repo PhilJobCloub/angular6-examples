@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() isAuthenticated : boolean;
+  @Input() profile;
   @Output() handleLogin : EventEmitter<any> = new EventEmitter;
   @Output() handleLogout : EventEmitter<any> = new EventEmitter;
 
