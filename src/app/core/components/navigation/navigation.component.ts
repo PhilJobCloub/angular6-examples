@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input , Output } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
+  @Input() isAuthenticated : boolean;
+  @Output() handleLogin : EventEmitter<any> = new EventEmitter;
+  @Output() handleLogout : EventEmitter<any> = new EventEmitter;
 
-  constructor() { }
 
-  ngOnInit() {
+  login() {
+    this.handleLogin.emit();
+  }
+
+  logout() {
+    this.handleLogout.emit();
   }
 
 }

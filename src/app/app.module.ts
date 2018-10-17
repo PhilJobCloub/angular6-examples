@@ -11,9 +11,11 @@ const ImportedComponents : any[] = [
   ...fromComponents.components,
 ];
 
+// interceptors
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 /***** modules ****/
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { DynamicFormsModule } from './shared/modules/forms/forms.module';
@@ -34,7 +36,7 @@ import { CustomSerializer, effects, reducers } from './store';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
-const ImportedModules: any[] = [
+const ImportedModules : any[] = [
   FormsModule,
   ReactiveFormsModule,
   DynamicFormsModule,
@@ -60,7 +62,13 @@ const ImportedModules: any[] = [
     ...ImportedModules,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
+  providers: [
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,7 @@
 <nav>
-  <app-navigation></app-navigation>
+  <app-navigation
+    [isAuthenticated]="isAuthenticated"
+    (handleLogin)="login()"
+    (handleLogout)="logout()"
+  ></app-navigation>
 </nav>

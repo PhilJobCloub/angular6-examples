@@ -1,6 +1,10 @@
 <div style="text-align:center">
   <!-- App Header -->
-  <app-header></app-header>
+  <app-header
+    [isAuthenticated]="isAuthenticated"
+    (handleLogin)="login()"
+    (handleLogout)="logout()">
+  </app-header>
   <section class="app-content">
     <!-- Ellipsis Pipe Example -->
     <!-- <app-test-ellipsis [text]="variable_text"></app-test-ellipsis> -->

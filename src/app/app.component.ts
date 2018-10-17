@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-
+import { SwUpdate } from '@angular/service-worker';
 import {
   debounceTime,
   map,
@@ -14,12 +14,13 @@ import { Observable, fromEvent } from 'rxjs';
 import { AppSandboxService } from './services/app-sandbox.service';
 import { SubjectService } from './services/subject.service';
 import { AppModalService } from './services/app-modal.service';
+import { AuthService } from './services/auth/auth.service';
 
 /* config  */
 import * as config from '@app/config/registration-form-template';
 
 /* dynamic form */
-import { DynamicFormComponent } from "@app/shared/modules/forms/components/dynamic-form/dynamic-form.component";
+import { DynamicFormComponent } from '@app/shared/modules/forms/components/dynamic-form/dynamic-form.component';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ import { DynamicFormComponent } from "@app/shared/modules/forms/components/dynam
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  @ViewChild(DynamicFormComponent) form : DynamicFormComponent;
   public today = new Date();
   public title : string = 'hello-world';
   public name : string = 'test';
@@ -43,32 +44,40 @@ export class AppComponent implements OnInit {
     { id : 2, name : 'Michel'},
     { id : 3 , name : 'Bernard'},
     { id : 4 , name : 'Corentin'}
-  ]
-  private age : number = 90;
+  ];
+  private age = 90;
   public resize$ : Observable<any>;
-  /**/
-
-  regConfig = config.registrationFormTemplate;
-
-  /**/
+  public regConfig = config.registrationFormTemplate;
 
   constructor(
+    public _authService : AuthService,
     private _service : SubjectService,
     private _appSandBox : AppSandboxService,
-    private _appModalService : AppModalService) {
+    private _appModalService : AppModalService,
+    private _swUpdate : SwUpdate) {
     this.age = 50;
 
-    //Create observable from the window event
+    // handle aAuthentication
+    this._authService.handleAuthentication();
+
+    // Create observable from the window event
     this.resize$ = fromEvent(window, 'resize')
     .pipe(
       debounceTime(200),
-      map(() => window.innerWidth), //Don't use mapTo! 
+      map(() => window.innerWidth), // Don't use mapTo!
       distinctUntilChanged(),
       startWith(window.innerWidth),
-      tap(width => this._appSandBox.setWindowWidth(width)), 
+      tap(width => this._appSandBox.setWindowWidth(width)),
     );
-    this.resize$.subscribe(); 
-  }
+    this.resize$.subscribe();
+
+    // Update App version if new version (PWA)
+    this._swUpdate.available.subscribe(event => {
+        this._swUpdate.activateUpdate()
+          .then(() => document.location.reload()
+          );
+      });
+    }
 
   ngOnInit() {
     this._service.userActivated.subscribe(
@@ -106,6 +115,18 @@ export class AppComponent implements OnInit {
 
   removeModal() {
     this._appModalService.destroy();
+  }
+
+  login() {
+    this._authService.login();
+  }
+
+  logout() {
+    this._authService.logout();
+  }
+
+  get isAuthenticated() {
+    return this._authService.isAuthenticated();
   }
 
 }

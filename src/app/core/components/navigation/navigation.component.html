@@ -31,4 +31,17 @@
             {{ rla_membership.isActive ? 'membership Selective' : 'membership' }}
         </a>
     </li>
+    <li>
+        <button
+            *ngIf="isAuthenticated; else isNotAuthenticated"
+            (click)="logout()">
+            Logout
+        </button>
+        <ng-template #isNotAuthenticated>
+        <button
+            (click)="login()">
+            Please Login
+        </button>
+        </ng-template>
+    </li>
 </ul>
