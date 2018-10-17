@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-callback',
   template: `
     <div class="loading">
-        <img src="assets/loading.svg" alt="loading">
+        <img src="/assets/images/loading.svg" alt="loading">
     </div>`,
   styleUrls: ['./callback.component.scss']
 })
