@@ -31,14 +31,14 @@ export class AuthService {
   });
 
   constructor(
-    public router: Router,
+    public _router : Router,
     private _userProfileService : UserProfileService) {}
 
-  public login(): void {
+  public login() : void {
     this.auth0.authorize();
   }
 
-  public initializeApp(): Promise<any> {
+  public initializeApp() : Promise<any> {
     return new Promise((resolve, reject) => {
           console.log(`initializeApp:: inside promise`);
  
@@ -56,14 +56,13 @@ export class AuthService {
     this.auth0.parseHash((err : any, authResult : any) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.router.navigate(['/users']);
+        this._router.navigate(['/users']);
       } else if (err) {
-        this.router.navigate(['/']);
+        this._router.navigate(['/']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
-
-      this.getProfile((err, profile) => {
+    this.getProfile((err, profile) => {
         this._userProfileService.setUserProfile(profile);
       });
     });
@@ -71,16 +70,16 @@ export class AuthService {
   public getProfile(cb : any) : void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
+      // throw new Error('Access token must exist to fetch profile');
+    } else {
+      const self = this;
+      this.auth0.client.userInfo(accessToken, (err : any, profile : any) => {
+        if (profile) {
+          self.userProfile = profile;
+        }
+        cb(err, profile);
+      });
     }
-
-    const self = this;
-    this.auth0.client.userInfo(accessToken, (err : any, profile : any) => {
-      if (profile) {
-        self.userProfile = profile;
-      }
-      cb(err, profile);
-    });
   }
 
   private setSession(authResult : any): void {
@@ -104,20 +103,18 @@ export class AuthService {
 
     this._userProfileService.setUserProfile({});
     // Go back to the home route
-    this.router.navigate(['/']);
+    this._router.navigate(['/']);
   }
 
-  public isAuthenticated(): boolean {
+  public isAuthenticated() : boolean {
     // Check whether the current time is past the
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
-   
     return new Date().getTime() < expiresAt;
   }
 
-  public userHasScopes(scopes: Array<string>): boolean {
+  public userHasScopes(scopes : Array<string>): boolean {
     const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
     return scopes.every(scope => grantedScopes.includes(scope));
   }
-
 }

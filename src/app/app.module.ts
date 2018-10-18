@@ -13,6 +13,7 @@ const ImportedComponents : any[] = [
 
 // interceptors
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
 /***** modules ****/
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -67,6 +68,11 @@ const ImportedModules : any[] = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     }],
   bootstrap: [AppComponent]

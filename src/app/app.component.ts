@@ -59,10 +59,11 @@ export class AppComponent implements OnInit {
     private _userProfileService : UserProfileService,
     private _swUpdate : SwUpdate) {
     this.age = 50;
-
+    this._authService.handleAuthentication();
+    
     this._userProfileService.userProfile$.subscribe(profile => this.profile = profile);
- // handle aAuthentication
- this._authService.handleAuthentication();
+    // handle aAuthentication
+    // 
     // Create observable from the window event
     this.resize$ = fromEvent(window, 'resize')
     .pipe(
