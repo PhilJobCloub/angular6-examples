@@ -8,11 +8,13 @@
         "files": [
           "/favicon.ico",
           "/index.html",
-          "/*.bundle.css",
-          "/*.bundle.js",
-          "/*.chunk.js"
+          "/*.css",
+          "/*.js"
         ]
-      }
+      },
+      "urls": [
+        "https://fonts.googleapis.com/**"
+      ]
     }, {
       "name": "assets",
       "installMode": "lazy",
@@ -23,7 +25,19 @@
         ]
       }
     }
+  ],
+  "dataGroups" : [
+    {
+      "name" : "users",
+      "urls" : [
+        "https://jsonplaceholder.typicode.com"
+      ],
+      "cacheConfig" : {
+        "strategy" : "freshness",
+        "maxSize" : 20,
+        "maxAge" : "1h",
+        "timeout" : "5s"
+      }
+    }
   ]
 }
-
-

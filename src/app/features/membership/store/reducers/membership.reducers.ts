@@ -13,7 +13,6 @@ export interface FeatureState extends fromApp.State {
     membershipState : State;
 }
 
-
 export interface State {
     entities : { [id : number] :  Membership };
     loaded : boolean;

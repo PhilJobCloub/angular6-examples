@@ -1,16 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 /*****Components****/
 import { AppComponent } from './app.component';
 import * as fromComponents from './components';
-
-const ImportedComponents : any[] = [
-  AppComponent,
-  ...fromComponents.components,
-];
-
 
 /***** modules ****/
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +29,14 @@ import { CustomSerializer, effects, reducers } from './store';
 /*******/
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+
+const ImportedComponents : any[] = [
+  AppComponent,
+  ...fromComponents.components,
+];
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeFr, 'fr');
 
 const ImportedModules : any[] = [
   FormsModule,
@@ -57,9 +61,10 @@ const ImportedModules : any[] = [
   imports: [
     BrowserModule,
     ...ImportedModules,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }, { provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
