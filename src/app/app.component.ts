@@ -28,6 +28,8 @@ import { DynamicFormComponent } from "@app/shared/modules/forms/components/dynam
 })
 export class AppComponent implements OnInit {
 
+  public isOnline: boolean;
+
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
   public today = new Date();
   public title : string = 'hello-world';
@@ -67,7 +69,10 @@ export class AppComponent implements OnInit {
       startWith(window.innerWidth),
       tap(width => this._appSandBox.setWindowWidth(width)), 
     );
-    this.resize$.subscribe(); 
+    this.resize$.subscribe();
+
+    //Check Online props
+    this.isOnline = navigator.onLine;
   }
 
   ngOnInit() {

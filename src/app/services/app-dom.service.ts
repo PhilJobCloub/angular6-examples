@@ -1,9 +1,9 @@
 import {
-  Injectable,
-  Injector,
+  ApplicationRef,
   ComponentFactoryResolver,
   EmbeddedViewRef,
-  ApplicationRef
+  Injectable,
+  Injector
 } from '@angular/core';
 
 @Injectable({
@@ -12,15 +12,15 @@ import {
 
 export class AppDomService {
 
-  private childComponentRef:any;
+  private childComponentRef : any;
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private injector: Injector
+    private componentFactoryResolver : ComponentFactoryResolver,
+    private appRef : ApplicationRef,
+    private injector : Injector
   ) { }
 
-  public appendComponentTo(parentId: string, child: any, childConfig?: childConfig) {
-    // Create a component reference from the component 
+  public appendComponentTo(parentId : string, child : any, childConfig? : ChildConfig) {
+    // Create a component reference from the component
     const childComponentRef = this.componentFactoryResolver
       .resolveComponentFactory(child)
       .create(this.injector);
@@ -55,9 +55,9 @@ export class AppDomService {
     // for (const key in outputs) {
         componentRef.instance['outputs'] = outputs;
     // }
+  }
 }
-}
-interface childConfig{
-  inputs:object,
-  outputs:object
+interface ChildConfig {
+  inputs : object;
+  outputs : object;
 }

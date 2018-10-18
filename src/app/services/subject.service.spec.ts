@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { SubjectService } from './subject.service';
 
@@ -9,7 +9,7 @@ describe('SubjectService', () => {
     });
   });
 
-  it('should be created', inject([SubjectService], (service: SubjectService) => {
+  it('should be created', inject([SubjectService], (service : SubjectService) => {
     expect(service).toBeTruthy();
   }));
 });

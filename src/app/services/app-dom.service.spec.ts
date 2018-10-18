@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { AppDomService } from './app-dom.service';
 
@@ -9,7 +9,7 @@ describe('AppDomService', () => {
     });
   });
 
-  it('should be created', inject([AppDomService], (service: AppDomService) => {
+  it('should be created', inject([AppDomService], (service : AppDomService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -25,6 +25,7 @@ export class ListSingleItemComponent implements OnInit {
   @Input() name  : string = 'Philippe';
   @Input() type : string; 
   @Input() slideState : string;
+  //@Input() isDeleteButtonDisplayed : boolean = true;
 
   @Output() handleClickEvent : EventEmitter<any> = new EventEmitter();
   @Output() handleItemClickEvent : EventEmitter<any> = new EventEmitter();

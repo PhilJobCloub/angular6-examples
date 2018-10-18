@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -26,13 +26,4 @@ import * as usersActions from '@app/features/users/store/actions/users.actions';
     ]
 })
 
-export class UserDetailsPage implements OnInit {
-  public user$ : Observable<User>
-
-  constructor(private store: Store<fromUsers.FeatureState>) {}
-
-  ngOnInit() {
-    this.user$ = this.store.select(fromUsersSelectors.getUserById);
-  }
-
-}
+export class UserDetailsPage {}

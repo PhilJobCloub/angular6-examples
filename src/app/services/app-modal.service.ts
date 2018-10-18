@@ -7,16 +7,16 @@ import { AppDomService } from './app-dom.service';
 
 export class AppModalService {
 
-  constructor(private _appDomService: AppDomService) { }
+  constructor(private _appDomService : AppDomService) { }
 
   private modalElementId = 'modal-container';
   private overlayElementId = 'overlay';
 
-  init(component: any, inputs: object, outputs: object) {
-    let componentConfig = {
-      inputs:inputs,
-      outputs:outputs
-    }
+  init(component : any, inputs : object, outputs : object) {
+    const componentConfig = {
+      inputs: inputs,
+      outputs: outputs
+    };
     this._appDomService.appendComponentTo(this.modalElementId, component, componentConfig);
     document.getElementById(this.modalElementId).className = 'show';
     document.getElementById(this.overlayElementId).className = 'show';

@@ -1,6 +1,9 @@
 <div style="text-align:center">
+  <p *ngIf="!isOnline" class="alert-error">'No Internet Connection'</p>
   <!-- App Header -->
   <app-header></app-header>
+  <app-auth-info></app-auth-info>
+  <app-auth-login></app-auth-login>
   <section class="app-content">
     <!-- Ellipsis Pipe Example -->
     <!-- <app-test-ellipsis [text]="variable_text"></app-test-ellipsis> -->

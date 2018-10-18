@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { AppModalService } from './app-modal.service';
 
@@ -9,7 +9,7 @@ describe('AppModalService', () => {
     });
   });
 
-  it('should be created', inject([AppModalService], (service: AppModalService) => {
+  it('should be created', inject([AppModalService], (service : AppModalService) => {
     expect(service).toBeTruthy();
   }));
 });

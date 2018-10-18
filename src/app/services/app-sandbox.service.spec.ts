@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { AppSandboxService } from './app-sandbox.service';
 
@@ -9,7 +9,7 @@ describe('AppSandboxService', () => {
     });
   });
 
-  it('should be created', inject([AppSandboxService], (service: AppSandboxService) => {
+  it('should be created', inject([AppSandboxService], (service : AppSandboxService) => {
     expect(service).toBeTruthy();
   }));
 });

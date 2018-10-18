@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
   providedIn: 'root'
 })
 export class SubjectService {
-  public userActivated = new BehaviorSubject(0)
+  public userActivated = new BehaviorSubject(0);
   constructor() { }
 
   resetUserActivated() {
