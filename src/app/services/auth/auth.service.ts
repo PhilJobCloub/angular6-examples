@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 import { UserProfileService } from '@app/services/user-profile.service';
+import { LoggerService } from '@app/services/logger.service';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -32,6 +34,7 @@ export class AuthService {
 
   constructor(
     public _router : Router,
+    public _loggerService : LoggerService,
     private _userProfileService : UserProfileService) {}
 
   public login() : void {
@@ -51,7 +54,7 @@ export class AuthService {
         });
   }
 
-  public handleAuthentication(): void {
+  public handleAuthentication() : void {
 
     this.auth0.parseHash((err : any, authResult : any) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -59,10 +62,10 @@ export class AuthService {
         this._router.navigate(['/users']);
       } else if (err) {
         this._router.navigate(['/']);
-        console.log(err);
+        LoggerService.error('Check the console for further details.', err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
-    this.getProfile((err, profile) => {
+    this.getProfile(( err, profile) => {
         this._userProfileService.setUserProfile(profile);
       });
     });
@@ -70,6 +73,7 @@ export class AuthService {
   public getProfile(cb : any) : void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
+      LoggerService.error('Access token must exist to fetch profile', {});
       // throw new Error('Access token must exist to fetch profile');
     } else {
       const self = this;
@@ -82,7 +86,7 @@ export class AuthService {
     }
   }
 
-  private setSession(authResult : any): void {
+  private setSession(authResult : any) : void {
 
     const scopes = authResult.scope || this.requestedScopes || '';
 
@@ -94,7 +98,7 @@ export class AuthService {
     localStorage.setItem('scopes', JSON.stringify(scopes));
   }
 
-  public logout(): void {
+  public logout() : void {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
