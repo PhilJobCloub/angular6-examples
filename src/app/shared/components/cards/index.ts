@@ -4,7 +4,7 @@ import { CardFooterComponent } from './card-footer/card-footer.component';
 import { CardHeaderComponent } from './card-header/card-header.component';
 
 
-export const components: any[] = [
+export const components : any[] = [
     CardComponent,
     CardBodyComponent,
     CardFooterComponent,

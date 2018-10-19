@@ -1,15 +1,15 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
-import { FieldConfig } from "@app/shared/modules/forms/interfaces/field.interface";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FieldConfig } from '@app/shared/modules/forms/interfaces/field.interface';
 
 @Component({
   selector: 'app-dynamic-form',
   template: `
   <form [formGroup]="form" (submit)="onSubmit($event)">
-    <ng-container 
-      *ngFor="let field of fields;" 
-      dynamicField 
-      [field]="field" 
+    <ng-container
+      *ngFor="let field of fields;"
+      dynamicField
+      [field]="field"
       [group]="form">
     </ng-container>
   </form>
@@ -17,11 +17,11 @@ import { FieldConfig } from "@app/shared/modules/forms/interfaces/field.interfac
   styles: []
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() fields: FieldConfig[] = [];
-  @Output() submit: EventEmitter<any> = new EventEmitter<any>();
-  form: FormGroup;
+  @Input() fields : FieldConfig[] = [];
+  @Output() submit : EventEmitter<any> = new EventEmitter<any>();
+  form : FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb : FormBuilder) { }
 
   ngOnInit() {
     this.form = this.createControl();
@@ -34,7 +34,7 @@ export class DynamicFormComponent implements OnInit {
   createControl() {
     const group = this.fb.group({});
     this.fields.forEach(field => {
-      if (field.type === "button") return;
+      if (field.type === 'button') { return; }
       const control = this.fb.control(
       field.value,
       this.bindValidations(field.validations || [])
@@ -46,7 +46,7 @@ export class DynamicFormComponent implements OnInit {
     return group;
     }
 
-  bindValidations(validations: any) {
+  bindValidations(validations : any) {
     if (validations.length > 0) {
       const validList = [];
       validations.forEach(valid => {
@@ -59,7 +59,7 @@ export class DynamicFormComponent implements OnInit {
     return null;
     }
 
-  onSubmit(event: Event) {
+  onSubmit(event : Event) {
     event.preventDefault();
     event.stopPropagation();
     if (this.form.valid) {
@@ -69,7 +69,7 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
+  validateAllFormFields(formGroup : FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
     const control = formGroup.get(field);
     control.markAsTouched({ onlySelf: true });

@@ -44,5 +44,4 @@ export class ModalComponent  {
     public close() {
         this._appModalService.destroy();
     }
-    
 }

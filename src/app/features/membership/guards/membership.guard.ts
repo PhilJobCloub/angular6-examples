@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/observable';
-import { filter, map, switchMap, take, tap } from 'rxjs/operators'
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 /**** reducer ****/

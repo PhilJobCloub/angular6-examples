@@ -27,10 +27,10 @@ import * as postsActions from '@app/features/posts/store/actions/posts.actions';
 })
 
 export class PostsListingPage implements OnInit {
-  public postsList$ : Observable<Post[]>
+  public postsList$ : Observable<Post[]>;
 
   constructor(
-    private store: Store<fromPosts.FeatureState>
+    private store : Store<fromPosts.FeatureState>
     ) {}
 
   ngOnInit() {

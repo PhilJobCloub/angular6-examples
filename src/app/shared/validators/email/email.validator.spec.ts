@@ -1,8 +1,8 @@
 import { Component, Directive } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormsModule, NG_VALIDATORS, AbstractControl,
-         NgForm, FormControl } from '@angular/forms';
+import { AbstractControl, FormControl, FormsModule,
+         NG_VALIDATORS, NgForm } from '@angular/forms';
 import { EmailValidator } from './email.validator';
 
 describe('Validator: Email', () => {
@@ -29,6 +29,6 @@ describe('Validator: Email', () => {
         expect(EmailValidator.validate(new FormControl('regular@email.com'))).toEqual(null);
     });
 
-   
+
 
 });

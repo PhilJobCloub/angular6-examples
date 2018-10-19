@@ -1,5 +1,5 @@
 
-import { Directive, HostListener, HostBinding } from '@angular/core';
+import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appDropdown]'

@@ -26,6 +26,4 @@ export class PostsHomePage  {
 
   // get param if in queryParams
   constructor() {}
-
-  
 }

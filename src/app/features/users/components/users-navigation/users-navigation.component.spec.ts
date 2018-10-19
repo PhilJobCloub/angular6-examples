@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UsersNavigationComponent } from './users-navigation.component';
 
 describe('UsersListComponent', () => {
-  let component: UsersNavigationComponent;
-  let fixture: ComponentFixture<UsersNavigationComponent>;
+  let component : UsersNavigationComponent;
+  let fixture : ComponentFixture<UsersNavigationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

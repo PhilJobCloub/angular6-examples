@@ -1,7 +1,7 @@
 import { UsersModule } from './users.module';
 
 describe('UsersModule', () => {
-  let usersModule: UsersModule;
+  let usersModule : UsersModule;
 
   beforeEach(() => {
     usersModule = new UsersModule();

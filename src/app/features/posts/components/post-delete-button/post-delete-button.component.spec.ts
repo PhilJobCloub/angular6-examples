@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PostDeleteButtonComponent } from './post-delete-button.component';
 
 describe('PostDeleteButtonComponent', () => {
-  let component: PostDeleteButtonComponent;
-  let fixture: ComponentFixture<PostDeleteButtonComponent>;
+  let component : PostDeleteButtonComponent;
+  let fixture : ComponentFixture<PostDeleteButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

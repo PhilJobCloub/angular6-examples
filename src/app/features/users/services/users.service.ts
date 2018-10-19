@@ -21,7 +21,7 @@ export class UsersService extends ResourceService<User> {
       'https://jsonplaceholder.typicode.com',
       'users',
       new UserSerializer()
-    )
+    );
   }
 }
 

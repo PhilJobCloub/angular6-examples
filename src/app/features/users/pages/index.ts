@@ -2,7 +2,7 @@ import { UsersHomePage } from './users-home/users-home.page';
 import { UserDetailsPage } from './user-details/user-details.page';
 import { UsersListingPage } from './users-listing/users-listing.page';
 
-export const pages: any[] = [
+export const pages : any[] = [
     UsersHomePage,
     UsersListingPage,
     UserDetailsPage

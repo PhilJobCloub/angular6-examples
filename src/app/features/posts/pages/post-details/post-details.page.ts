@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, State } from '@ngrx/store';
+import { State, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -34,11 +34,11 @@ export class PostDetailsPage implements OnInit {
 
   constructor(
       private router : Router,
-      private store: Store<fromPosts.FeatureState>
+      private store : Store<fromPosts.FeatureState>
     ) {}
 
   ngOnInit() {
-    this.post$ = this.store.select(fromPostsSelectors.getPostById)
+    this.post$ = this.store.select(fromPostsSelectors.getPostById);
   }
 
   deletePost(postId : number) {

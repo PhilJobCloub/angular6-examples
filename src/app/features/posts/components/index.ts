@@ -2,7 +2,7 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostDeleteButtonComponent } from './post-delete-button/post-delete-button.component';
 
-export const components: any[] = [
+export const components : any[] = [
     PostsListComponent,
     PostFormComponent,
     PostDeleteButtonComponent

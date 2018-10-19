@@ -2,7 +2,7 @@ import { ListItemsComponent } from './list-items/list-items.component';
 import { ListSingleItemComponent } from './list-single-item/list-single-item.component';
 
 
-export const components: any[] = [
+export const components : any[] = [
     ListItemsComponent,
     ListSingleItemComponent
   ];

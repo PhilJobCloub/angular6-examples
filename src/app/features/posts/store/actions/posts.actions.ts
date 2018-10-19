@@ -16,32 +16,32 @@ export const ActionTypes = {
 
 export class FetchPostsStartActions implements Action {
   type = ActionTypes.FETCH_POSTS_START;
-  constructor(public payload?: any) { }
+  constructor(public payload? : any) { }
 }
 
 export class FetchPostsSucceedActions implements Action {
     readonly type = ActionTypes.FETCH_POSTS_SUCCEED;
-    constructor(public payload: Post[]) { }
+    constructor(public payload : Post[]) { }
 }
 
 export class FetchPostsFailedActions implements Action {
     type = ActionTypes.FETCH_POSTS_FAILED;
-    constructor(public payload?: any) { }
+    constructor(public payload? : any) { }
 }
 
 export class AddPostActions implements Action {
     readonly type = ActionTypes.ADD_POST;
-    constructor(public payload: Post) { }
+    constructor(public payload : Post) { }
 }
 
 export class DeletePostActions implements Action {
     type = ActionTypes.DELETE_POST;
-    constructor(public payload: number) { }
+    constructor(public payload : number) { }
 }
 
 export class UpdatePostActions implements Action {
     type = ActionTypes.UPDATE_POST;
-    constructor(public payload: Post) { }
+    constructor(public payload : Post) { }
 }
 
 export type Actions
@@ -50,5 +50,5 @@ export type Actions
   | FetchPostsFailedActions
   | AddPostActions
   | DeletePostActions
-  | UpdatePostActions
+  | UpdatePostActions;
 

@@ -1,22 +1,22 @@
 import {
   ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit,
   ViewContainerRef
-  } from "@angular/core";
+  } from '@angular/core';
 
 
-import { FormGroup } from "@angular/forms";
-import { FieldConfig } from "../../interfaces/field.interface";
-import { InputComponent } from "../input/input.component";
-import { ButtonComponent } from "../button/button.component";
-import { SelectComponent } from "../select/select.component";
-import { DateComponent } from "../date/date.component";
-import { RadiobuttonComponent } from "../radiobutton/radiobutton.component";
-import { CheckboxComponent } from "../checkbox/checkbox.component";
+import { FormGroup } from '@angular/forms';
+import { FieldConfig } from '../../interfaces/field.interface';
+import { InputComponent } from '../input/input.component';
+import { ButtonComponent } from '../button/button.component';
+import { SelectComponent } from '../select/select.component';
+import { DateComponent } from '../date/date.component';
+import { RadiobuttonComponent } from '../radiobutton/radiobutton.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 /*
-Create a variable componentMapper which map 
-the field types (input, select, button, date, 
-radiobutton, checkbox) to the 
+Create a variable componentMapper which map
+the field types (input, select, button, date,
+radiobutton, checkbox) to the
 corresponding field component.
 */
 const componentMapper = {
@@ -33,20 +33,20 @@ const componentMapper = {
 })
 
 export class DynamicFieldDirective implements OnInit {
-  @Input() field: FieldConfig;
-  @Input() group: FormGroup;
+  @Input() field : FieldConfig;
+  @Input() group : FormGroup;
 
   /*
-  Create a variable componentRef of type any. 
-  It maintains the instance of dynamically created 
+  Create a variable componentRef of type any.
+  It maintains the instance of dynamically created
   component.
   */
 
-  componentRef: any;
+  componentRef : any;
 
   constructor(
-    private resolver: ComponentFactoryResolver,
-    private container: ViewContainerRef
+    private resolver : ComponentFactoryResolver,
+    private container : ViewContainerRef
   ) { }
 
   ngOnInit() {
@@ -57,5 +57,5 @@ export class DynamicFieldDirective implements OnInit {
     this.componentRef.instance.field = this.field;
     this.componentRef.instance.group = this.group;
     }
-    
+
 }

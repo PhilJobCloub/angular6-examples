@@ -20,7 +20,7 @@ export class PostsService extends ResourceService<Post> {
       'https://jsonplaceholder.typicode.com',
       'posts',
       new PostSerializer()
-    )
+    );
   }
 }
 

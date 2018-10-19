@@ -1,7 +1,7 @@
 import { DynamicFormsModule } from './forms.module';
 
 describe('FormsModule', () => {
-  let formsModule: DynamicFormsModule;
+  let formsModule : DynamicFormsModule;
 
   beforeEach(() => {
     formsModule = new DynamicFormsModule();

@@ -3,9 +3,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'mkpEllipsis' })
 export class EllipsisPipe implements PipeTransform {
-  transform(str: string, strLength: number = 250) {
+  transform(str : string, strLength : number = 250) {
     // make sure it is a string
-    str = str+'';
+    str = str + '';
     const withoutHtml = str.replace(/(<([^>]+)>)/ig, '');
 
     if (str.length >= strLength) {

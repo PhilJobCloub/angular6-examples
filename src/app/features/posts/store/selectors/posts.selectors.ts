@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 /**** main reducer ****/
 import * as fromRoot from '@app/store';
@@ -10,24 +10,24 @@ export const getPostState = createFeatureSelector<fromFeatures.State>('postsStat
 export const getAllPosts = createSelector(
     getPostState,
     state => state.entities
-)
+);
 
 /* transform my obj in an array */
 export const getPostsList = createSelector(
     getAllPosts,
     entities => Object.keys(entities).map(key => entities[key])
-)
+);
 
 export const getPostsLoaded = createSelector(
     getPostState,
     state => state.loaded
-)
+);
 
 export const getPostById = createSelector(
     getAllPosts,
     fromRoot.getRouterState,
     (entities, router) => {
         return router.state &&
-            entities[router.state.params.postId]
+            entities[router.state.params.postId];
     }
-)
+);

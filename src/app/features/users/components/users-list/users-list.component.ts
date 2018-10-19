@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
@@ -16,7 +16,7 @@ import * as usersActions from '@app/features/users/store/actions/users.actions';
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
-  
+
 })
 export class UsersListComponent {
 
@@ -24,7 +24,7 @@ export class UsersListComponent {
 
   constructor(
     private router : Router,
-    private store: Store<fromUsers.FeatureState>
+    private store : Store<fromUsers.FeatureState>
     ) {}
 
   removeUser({id}) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 /**** reducer ****/
@@ -16,9 +16,9 @@ export class PostDeleteButtonComponent implements OnInit {
 
   @Input() postId : number;
 
-  @Output() handleClickEvent: EventEmitter<any> = new EventEmitter();
+  @Output() handleClickEvent : EventEmitter<any> = new EventEmitter();
 
-  constructor(private store: Store<fromPosts.FeatureState>) { }
+  constructor(private store : Store<fromPosts.FeatureState>) { }
 
   ngOnInit() {
   }

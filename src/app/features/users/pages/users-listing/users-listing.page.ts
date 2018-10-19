@@ -27,10 +27,10 @@ import * as usersActions from '@app/features/users/store/actions/users.actions';
 })
 
 export class UsersListingPage implements OnInit {
-  public usersList$ : Observable<User[]>
+  public usersList$ : Observable<User[]>;
 
   constructor(
-    private store: Store<fromUsers.FeatureState>
+    private store : Store<fromUsers.FeatureState>
     ) {}
 
   ngOnInit() {

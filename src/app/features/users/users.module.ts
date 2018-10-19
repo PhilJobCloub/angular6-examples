@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 /***** modules ****/
 import { SharedModule } from '@app/shared/shared.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
 /*****Components****/

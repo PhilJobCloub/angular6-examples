@@ -2,7 +2,7 @@
 import { EllipsisPipe } from './ellipsis/ellipsis.pipe';
 
 
-export const pipes: any[] = [
+export const pipes : any[] = [
     EllipsisPipe
 ];
 

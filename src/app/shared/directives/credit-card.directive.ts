@@ -1,4 +1,4 @@
-import { 
+import {
   Directive,
   HostBinding,
   HostListener } from '@angular/core';
@@ -8,21 +8,21 @@ import {
 })
 export class CreditCardDirective {
 
-  @HostBinding('style.background') 
+  @HostBinding('style.background')
   background : string;
 
 
-  @HostListener('input', ['$event']) 
-  onKeyDown(event: KeyboardEvent) {
+  @HostListener('input', ['$event'])
+  onKeyDown(event : KeyboardEvent) {
     const input = event.target as HTMLInputElement;
-    //console.log(input.value)
+    // console.log(input.value)
 
     let trimmed = input.value.replace(/\s+/g, '');
     if (trimmed.length > 16) {
       trimmed = trimmed.substr(0, 16);
     }
 
-    let numbers = [];
+    const numbers = [];
     for (let i = 0; i < trimmed.length; i += 4) {
       numbers.push(trimmed.substr(i, 4));
     }
@@ -37,8 +37,8 @@ export class CreditCardDirective {
 
   }
 
-  constructor() { 
-      //this.background = '#cc3300';
+  constructor() {
+      // this.background = '#cc3300';
   }
 
 }

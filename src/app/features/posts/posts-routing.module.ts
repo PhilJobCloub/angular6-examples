@@ -8,8 +8,8 @@ import * as fromPages from './pages';
 /*****Components****/
 import * as fromComponents from './components';
 
-export const routes: Routes = [
-  { path: '', 
+export const routes : Routes = [
+  { path: '',
     component: fromPages.PostsHomePage,
     children : [
       { path: 'listing', redirectTo : '' },
@@ -17,10 +17,6 @@ export const routes: Routes = [
       { path: ':postId', component : fromPages.PostDetailsPage }
     ]
   }
-  
-  
-
-  
 ];
 
 @NgModule({

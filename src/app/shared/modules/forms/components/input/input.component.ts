@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from "@angular/forms";
-import { FieldConfig } from "@app/shared/modules/forms/interfaces/field.interface";
+import { FormGroup } from '@angular/forms';
+import { FieldConfig } from '@app/shared/modules/forms/interfaces/field.interface';
 
 @Component({
   selector: 'app-input',
   template: `
-  <div 
+  <div
     [formGroup]="group">
-    <input 
-      [formControlName]="field.name" 
-      [placeholder]="field.label" 
+    <input
+      [formControlName]="field.name"
+      [placeholder]="field.label"
       [type]="field.inputType">
-    <ng-container 
-      *ngFor="let validation of field.validations;" 
+    <ng-container
+      *ngFor="let validation of field.validations;"
       ngProjectAs="errors">
-    <span 
-      #errors 
+    <span
+      #errors
       *ngIf="group.get(field.name).hasError(validation.name)">
         {{validation.message}}
       </span>
@@ -26,8 +26,8 @@ import { FieldConfig } from "@app/shared/modules/forms/interfaces/field.interfac
 })
 
 export class InputComponent implements OnInit {
-  field: FieldConfig;
-  group: FormGroup;
+  field : FieldConfig;
+  group : FormGroup;
   constructor() {}
   ngOnInit() {}
   }

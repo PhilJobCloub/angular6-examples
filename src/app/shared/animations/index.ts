@@ -1,7 +1,7 @@
 import { slideIn } from './slide-in.animations';
 import { fadeOut } from './fade-out.animations';
 
-export const animation: any[] = [
+export const animation : any[] = [
     slideIn,
     fadeOut
   ];

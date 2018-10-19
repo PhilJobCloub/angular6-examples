@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
@@ -16,7 +16,7 @@ import * as postsActions from '@app/features/posts/store/actions/posts.actions';
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
   styleUrls: ['./posts-list.component.scss'],
-  
+
 })
 export class PostsListComponent {
 
@@ -24,7 +24,7 @@ export class PostsListComponent {
 
   constructor(
     private router : Router,
-    private store: Store<fromPosts.FeatureState>
+    private store : Store<fromPosts.FeatureState>
     ) {}
 
   removePost({id}) {

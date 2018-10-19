@@ -6,7 +6,7 @@ import { RadiobuttonComponent } from './radiobutton/radiobutton.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 
-export const components: any[] = [
+export const components : any[] = [
     InputComponent,
     ButtonComponent,
     SelectComponent,
@@ -19,7 +19,7 @@ export const components: any[] = [
 import { DynamicFieldDirective } from './dynamic-field/dynamic-field.component';
 
 
-export const directives: any[] = [
+export const directives : any[] = [
     DynamicFieldDirective
 
 ];
@@ -33,4 +33,4 @@ export { RadiobuttonComponent } from './radiobutton/radiobutton.component';
 export { CheckboxComponent } from './checkbox/checkbox.component';
 export { DynamicFieldDirective } from './dynamic-field/dynamic-field.component';
 export { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
-  
+

@@ -2,7 +2,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UsersNavigationComponent } from './users-navigation/users-navigation.component';
 
-export const components: any[] = [
+export const components : any[] = [
     UsersListComponent,
     UserFormComponent,
     UsersNavigationComponent
