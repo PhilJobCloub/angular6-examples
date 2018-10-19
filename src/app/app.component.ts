@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { SwUpdate } from '@angular/service-worker';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -13,6 +13,8 @@ import { fromEvent, Observable } from 'rxjs';
 import { AppSandboxService } from './services/app-sandbox.service';
 import { SubjectService } from './services/subject.service';
 import { AppModalService } from './services/app-modal.service';
+import { AuthService } from './services/auth/auth.service';
+import { UserProfileService } from '@app/services/user-profile.service';
 
 /* config  */
 import * as config from '@app/config/registration-form-template';
@@ -29,18 +31,21 @@ export class AppComponent implements OnInit {
 
   @ViewChild(DynamicFormComponent) form : DynamicFormComponent;
   public today = new Date();
+  public profile;
   public title : String = 'hello-world';
   public name : String = 'test';
   public valItem : String = 'my new value';
   public nameCreated : Boolean = false;
   public variable_text : String = `Contrary to popular belief, Lorem Ipsum is not simply random text.
-     It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-     a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
-     from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-     source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-     written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-     The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from
-     "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+  It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+  Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+  the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites
+  of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes
+  from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+  written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+  The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+    Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
     `;
 
   public users : any[] = [
@@ -49,21 +54,23 @@ export class AppComponent implements OnInit {
     { id : 3 , name : 'Bernard'},
     { id : 4 , name : 'Corentin'}
   ];
-  private age : Number = 90;
+  private age = 90;
   public resize$ : Observable<any>;
-  public isOnline : boolean;
-  /**/
-
-  regConfig = config.registrationFormTemplate;
-
-  /**/
+  public regConfig = config.registrationFormTemplate;
 
   constructor(
+    public _authService : AuthService,
     private _service : SubjectService,
     private _appSandBox : AppSandboxService,
-    private _appModalService : AppModalService) {
+    private _appModalService : AppModalService,
+    private _userProfileService : UserProfileService,
+    private _swUpdate : SwUpdate) {
     this.age = 50;
+    this._authService.handleAuthentication();
 
+    this._userProfileService.userProfile$.subscribe(profile => this.profile = profile);
+    // handle aAuthentication
+    //
     // Create observable from the window event
     this.resize$ = fromEvent(window, 'resize')
     .pipe(
@@ -74,11 +81,17 @@ export class AppComponent implements OnInit {
       tap(width => this._appSandBox.setWindowWidth(width)),
     );
     this.resize$.subscribe();
-    // Check Online props
-    this.isOnline = navigator.onLine;
-  }
+
+    // Update App version if new version (PWA)
+    this._swUpdate.available.subscribe(event => {
+        this._swUpdate.activateUpdate()
+          .then(() => document.location.reload()
+          );
+      });
+    }
 
   ngOnInit() {
+
     this._service.userActivated.subscribe(
       (val) => {
         console.log(val);
@@ -113,5 +126,21 @@ export class AppComponent implements OnInit {
   removeModal() {
     this._appModalService.destroy();
   }
+
+  login() {
+    this._authService.login();
+  }
+
+  logout() {
+    this._authService.logout();
+  }
+
+  get isAuthenticated() {
+    return this._authService.isAuthenticated();
+  }
+
+
+
+
 
 }

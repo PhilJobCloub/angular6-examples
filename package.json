@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "server": "http-server ./dist/hello-world",
-    "start": "ng serve --open --port 4250",
+    "start": "ng serve --open --port 4200",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -27,6 +27,7 @@
     "@ngrx/router-store": "^6.1.0",
     "@ngrx/store": "^6.1.0",
     "@ngrx/store-devtools": "^6.1.0",
+    "auth0-js": "^9.8.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"

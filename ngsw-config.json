@@ -8,11 +8,12 @@
         "files": [
           "/favicon.ico",
           "/index.html",
+          "/*.scss",
           "/*.css",
           "/*.js"
         ]
       },
-      "urls": [
+      "urls" : [ 
         "https://fonts.googleapis.com/**"
       ]
     }, {
@@ -35,9 +36,10 @@
       "cacheConfig" : {
         "strategy" : "freshness",
         "maxSize" : 20,
-        "maxAge" : "1h",
-        "timeout" : "5s"
+        "maxAge" :"1h",
+        "timeout": "5s"
       }
     }
   ]
+
 }

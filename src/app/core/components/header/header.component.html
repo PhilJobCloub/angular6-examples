@@ -1,3 +1,8 @@
 <nav>
-  <app-navigation></app-navigation>
+  <app-navigation
+    [profile]="profile"
+    [isAuthenticated]="isAuthenticated"
+    (handleLogin)="login()"
+    (handleLogout)="logout()"
+  ></app-navigation>
 </nav>

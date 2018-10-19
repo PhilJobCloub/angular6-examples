@@ -26,3 +26,35 @@
 :host a.active-link {
     border-color:rgb(26, 221, 247);
 }
+
+:host button {
+    cursor : pointer;
+    background : none;
+    padding:7px 15px;
+    border-radius : 7px;
+    font-size: 14px;
+    border: 1px solid #fff;
+    color:#fff;
+    margin: 5px 0;
+    &:hover {
+        background: #fff;
+        color: #2478e6;
+    }
+    
+}
+
+:host .flex {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.mat-card-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.example-header-image {
+    background-size: cover;
+  }

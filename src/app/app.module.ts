@@ -8,8 +8,12 @@ import localeFr from '@angular/common/locales/fr';
 import { AppComponent } from './app.component';
 import * as fromComponents from './components';
 
+// interceptors
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+
 /***** modules ****/
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { DynamicFormsModule } from './shared/modules/forms/forms.module';
@@ -64,7 +68,21 @@ const ImportedModules : any[] = [
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }, { provide: LOCALE_ID, useValue: 'fr' }],
+  providers: [
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
+    { provide: LOCALE_ID,
+      useValue: 'fr' }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

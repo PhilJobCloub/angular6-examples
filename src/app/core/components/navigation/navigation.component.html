@@ -1,4 +1,4 @@
-<ul>
+<ul *ngIf="isAuthenticated; else isNotAuthenticated">
     <li>
         <a 
             [routerLink]="['users']"
@@ -31,4 +31,27 @@
             {{ rla_membership.isActive ? 'membership Selective' : 'membership' }}
         </a>
     </li>
+    <li class="flex">
+        <span>{{profile?.name}}</span>
+        <div class="mat-card-avatar example-header-image"
+            [ngStyle]="{'background-image':' url(' + profile?.picture+ ')'}">
+        </div>
+        <button
+            (click)="logout()">
+            Logout
+        </button>
+    </li>
 </ul>
+<ng-template #isNotAuthenticated>
+    <ul>
+        <li><a [ngStyle]="{opacity : 0}" href="#">&nbsp;</a></li>
+        <li><a [ngStyle]="{opacity : 0}" href="#">&nbsp;</a></li>
+        <li><a [ngStyle]="{opacity : 0}" href="#">&nbsp;</a></li>
+        <li>
+            <button
+                (click)="login()">
+                Please Login
+            </button>
+        </li>
+    </ul>
+</ng-template>
