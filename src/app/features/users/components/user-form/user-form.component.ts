@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormGroup, FormBuilder  } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 /**** model ****/
@@ -18,11 +18,11 @@ import * as usersActions from '@app/features/users/store/actions/users.actions';
 })
 export class UserFormComponent implements OnInit {
 
-  public userForm: FormGroup;
+  public userForm : FormGroup;
 
   constructor(
-    private _formbuilder: FormBuilder,
-    private store: Store<fromUsers.FeatureState>
+    private _formbuilder : FormBuilder,
+    private store : Store<fromUsers.FeatureState>
     ) {}
 
   ngOnInit() {
@@ -31,12 +31,12 @@ export class UserFormComponent implements OnInit {
       name : new FormControl(null,  [
         Validators.required
       ])
-    })   
+    });
   }
 
    // convenience getter for easy access to form fields
-   get f() { 
-    return this.userForm.controls; 
+   get f() {
+    return this.userForm.controls;
   }
 
   addUser() : void {

@@ -1,9 +1,9 @@
-import { 
-  Component, 
-  OnInit, 
+import {
+  Component,
+  EventEmitter,
   Input,
-  Output,
-  EventEmitter } from '@angular/core';
+  OnInit,
+  Output } from '@angular/core';
 
 @Component({
   selector: 'app-list-items',
@@ -13,10 +13,10 @@ import {
 export class ListItemsComponent {
 
   @Input() items : any[];
-  @Input() type : string = 'string'; 
-  
-  @Output() handleOnClickEvent: EventEmitter<any> = new EventEmitter();
-  @Output() handleOnItemClickEvent: EventEmitter<any> = new EventEmitter();
+  @Input() type = 'string';
+
+  @Output() handleOnClickEvent : EventEmitter<any> = new EventEmitter();
+  @Output() handleOnItemClickEvent : EventEmitter<any> = new EventEmitter();
 
   onClickEvent(item : any) {
     this.handleOnClickEvent.emit(item);
@@ -25,5 +25,5 @@ export class ListItemsComponent {
   onItemClickEvent(item : any) {
     this.handleOnItemClickEvent.emit(item);
   }
-  
+
 }
